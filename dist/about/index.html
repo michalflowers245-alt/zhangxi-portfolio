@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="zh-CN" data-theme="light">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#fff8e8" data-theme-color>
+  <meta name="description" content="张熙的个人介绍、核心能力与工作方法。">
+  <meta property="og:title" content="关于我｜张熙">
+  <meta property="og:description" content="张熙的个人介绍、核心能力与工作方法。">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="zh_CN">
+
+  <title>关于我｜张熙</title>
+  <script>(function initializeTheme(){
+  const root=document.documentElement;
+  let choice=null;
+  try{const saved=localStorage.getItem('zhangxi-theme-reference');if(saved==='light'||saved==='dark')choice=saved;}catch{}
+  if(choice)root.dataset.themeChoice=choice;else delete root.dataset.themeChoice;
+  root.dataset.theme=choice||(matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light');
+  document.querySelector('[data-theme-color]')?.setAttribute('content',root.dataset.theme==='dark'?'#181817':'#fff8e8');
+})();</script>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='10' fill='%23080b0e'/%3E%3Cpath d='M15 18h34v8H37v22h-9V26H15z' fill='%23d8b678'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="/assets/site.css?v=67253512da1cc3a2">
+  <link rel="stylesheet" href="/assets/folio.css?v=67253512da1cc3a2">
+  <link rel="stylesheet" href="/assets/media.css?v=67253512da1cc3a2">
+  <link rel="stylesheet" href="/assets/refine.css?v=67253512da1cc3a2">
+  <script type="module" src="/assets/site.js?v=67253512da1cc3a2"></script>
+  <meta property="og:site_name" content="张熙作品集">
+  <meta property="og:image" content="/assets/portfolio/portrait-original.jpg">
+  <meta property="og:image:alt" content="张熙个人照片">
+  <meta property="og:image:width" content="960">
+  <meta property="og:image:height" content="1440">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="关于我｜张熙">
+  <meta name="twitter:description" content="张熙的个人介绍、核心能力与工作方法。">
+  <meta name="twitter:image" content="/assets/portfolio/portrait-original.jpg">
+  <meta name="twitter:image:alt" content="张熙个人照片">
+</head>
+<body class="page-about">
+  <a class="skip-link" href="#main-content">跳至正文</a>
+  <header class="site-header">
+    <div class="header-inner page-shell">
+      <a class="brand" href="/" aria-label="返回首页"><strong>张熙</strong><span>ZHANG XI</span></a>
+      <nav id="primary-navigation" aria-label="主导航">
+        <a href="/">首页</a><a href="/work/">作品集</a><a href="/resume/">经历简历</a><a href="/about/" aria-current="page">关于我</a><a href="/#contact">联系我</a>
+      </nav>
+      <div class="header-tools">
+        <button class="theme-toggle icon-button" type="button" aria-label="切换为深色主题" title="切换明暗主题"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="7.5"/><path d="M12 4.5v15a7.5 7.5 0 0 0 0-15Z" fill="currentColor" stroke="none"/></svg></button>
+        <button class="menu-toggle icon-button" type="button" aria-label="打开导航" aria-controls="primary-navigation" aria-expanded="false"><span></span><span></span></button>
+      </div>
+    </div>
+  </header>
+  <script>(function initializeShell(){
+  const root=document.documentElement;
+  const menu=document.querySelector('.menu-toggle'), nav=document.querySelector('#primary-navigation'),theme=document.querySelector('.theme-toggle');
+  const compact=matchMedia('(max-width:780px)'),systemTheme=matchMedia('(prefers-color-scheme: dark)');
+  let choice=['light','dark'].includes(root.dataset.themeChoice)?root.dataset.themeChoice:null;
+  let lastStoredChoice=choice,memoryOnlyChoice=false;
+  const syncTheme=()=>{const dark=root.dataset.theme==='dark';theme.setAttribute('aria-label',dark?'切换为浅色主题':'切换为深色主题');document.querySelector('[data-theme-color]')?.setAttribute('content',dark?'#181817':'#fff8e8');};
+  const applyTheme=()=>{if(choice)root.dataset.themeChoice=choice;else delete root.dataset.themeChoice;root.dataset.theme=choice||(systemTheme.matches?'dark':'light');syncTheme();};
+  const refreshStoredTheme=()=>{
+    let saved;
+    try{const value=localStorage.getItem('zhangxi-theme-reference');saved=value==='light'||value==='dark'?value:null;}catch{applyTheme();return;}
+    // A returned BFCache page adopts newer persisted choices. A failed local
+    // write keeps its in-memory choice unless a different valid choice appears.
+    if(!memoryOnlyChoice||(saved&&saved!==lastStoredChoice)){choice=saved;memoryOnlyChoice=false;}
+    lastStoredChoice=saved;applyTheme();
+  };
+  const menuOpen=()=>menu.getAttribute('aria-expanded')==='true';
+  const firstNavLink=()=>nav.querySelector('a[href]');
+  let lastFocused=null,wasCompact=compact.matches;
+  const setMenu=(open,restore=false)=>{
+    // Only reclaim focus when closing the region which still owns it.
+    const returnFocus=!open&&compact.matches&&(restore||nav.contains(document.activeElement));
+    if(returnFocus)menu.focus({preventScroll:true});
+    menu.setAttribute('aria-expanded',String(open));menu.setAttribute('aria-label',open?'关闭导航':'打开导航');
+    nav.toggleAttribute('data-open',open);if(open)nav.scrollTop=0;
+  };
+  theme.addEventListener('click',()=>{choice=root.dataset.theme==='dark'?'light':'dark';try{localStorage.setItem('zhangxi-theme-reference',choice);lastStoredChoice=choice;memoryOnlyChoice=false;}catch{memoryOnlyChoice=true;}applyTheme();});
+  systemTheme.addEventListener('change',()=>{if(!choice)applyTheme();});
+  window.addEventListener('pageshow',refreshStoredTheme);
+  window.addEventListener('storage',event=>{if(event.key===null||event.key==='zhangxi-theme-reference')refreshStoredTheme();});
+  menu.addEventListener('click',event=>{
+    const open=!menuOpen();setMenu(open);
+    // Keyboard / assistive activation enters the disclosure; pointer opening does not steal focus.
+    if(open&&event.detail===0)firstNavLink()?.focus({preventScroll:true});
+  });
+  menu.addEventListener('keydown',event=>{
+    // Also support switching from a pointer-opened disclosure to keyboard navigation.
+    if(event.key==='Tab'&&!event.shiftKey&&menuOpen()){
+      event.preventDefault();firstNavLink()?.focus({preventScroll:true});
+    }
+  });
+  nav.addEventListener('click',event=>{
+    if(event.target.closest('a')&&event.button===0&&!event.metaKey&&!event.ctrlKey&&!event.shiftKey&&!event.altKey)setMenu(false);
+  });
+  document.addEventListener('focusin',event=>{
+    lastFocused=event.target;
+    // This is a non-modal disclosure: forward and reverse Tab may leave it normally.
+    if(menuOpen()&&!nav.contains(event.target)&&event.target!==menu)setMenu(false);
+  });
+  document.addEventListener('focusout',event=>{
+    // Preserve the owner when CSS hides it, regardless of media-query/blur order.
+    // A move from a visible control to blank content is not a resize focus request.
+    if(!event.relatedTarget&&compact.matches===wasCompact&&event.target.getClientRects().length)lastFocused=null;
+  });
+  document.addEventListener('keydown',event=>{
+    if(event.key==='Escape'&&menuOpen()){event.preventDefault();setMenu(false,true);}
+  });
+  document.addEventListener('click',event=>{if(!event.target.closest('.site-header')&&menuOpen())setMenu(false);});
+  compact.addEventListener('change',()=>{
+    const active=document.activeElement===document.body?lastFocused:document.activeElement;
+    const toMenu=compact.matches&&nav.contains(active),toNav=!compact.matches&&active===menu;
+    wasCompact=compact.matches;setMenu(false);
+    if(toMenu)menu.focus({preventScroll:true});else if(toNav)firstNavLink()?.focus({preventScroll:true});
+  });applyTheme();root.classList.add('has-js');
+})();</script>
+  <main id="main-content"><section class="page-hero page-shell about-hero"><div class="page-hero-top"><span>长沙 · 中南大学</span></div><h1>关于我</h1><p class="about-lead">我在中南大学学习土木工程，先后参与教育创业、创业者社群和 AI 产品实践。从教师与学生的匹配，到网页资料整理和内容工作台，我关注的是具体需求，并负责把研究、产品设计和团队协作接起来。</p></section>
+  <section class="resume-section page-shell"><header class="section-flag"><div><h2>我能带来的能力</h2></div><a class="section-more" href="/resume/">查看经历与时间线 →</a></header><div class="skill-grid"><article class="skill-card"><h3>复杂问题简单化</h3><p>快速抓住问题核心，把复杂需求拆成清楚、可执行、可验证的步骤。</p><div class="case-references" aria-label="相关案例"><a href="/work/kuaizhai-web-clipper/">查看AI Web Clipper｜快摘</a><a href="/work/shujian-financial-brief/">查看数鉴｜AI 财报简报引擎</a></div></article><article class="skill-card"><h3>资源整合与协调</h3><p>连接不同的人、团队和资源，找到合作点并推动事情进入执行。</p><div class="case-references" aria-label="相关案例"><a href="/work/xingcheng-maker/">查看星城创客</a><a href="/work/tongluren/">查看同路人工作室</a></div></article><article class="skill-card"><h3>AI 与 Codex 应用</h3><p>用 AI 和 Codex 加快调研、产品连接、原型搭建与工作流优化。</p><div class="case-references" aria-label="相关案例"><a href="/work/opc-ai-workflow/">查看OPC 与 AI 工作流</a><a href="/work/ai-copy-workbench/">查看闪聚星球 AI 文案工作台</a></div></article><article class="skill-card"><h3>产品连接与落地</h3><p>发现产品能力与业务需求之间的联系，把分散想法整合为可验证项目。</p><div class="case-references" aria-label="相关案例"><a href="/work/rally/">查看Mazi 活动众筹平台</a><a href="/work/education-tools/">查看物理工作台与真题分析工具链</a></div></article><article class="skill-card"><h3>活动主持与组织</h3><p>跨项目累计主持及组织上百场活动，兼顾表达、流程、沟通和临场应变。</p><div class="case-references" aria-label="相关案例"><a href="/work/xingcheng-maker/">查看星城创客</a><a href="/work/variational-activities/">查看Variational 活动与传播实践</a></div></article></div></section>
+  <section class="resume-section page-shell"><header class="section-flag"><div><h2>我的工作方式</h2></div></header><div class="principle-list"><article class="principle-card"><span class="method-number">01</span><div><h3>从问题开始，而不是先堆功能</h3><p>先弄清楚是谁在什么场景里被什么问题卡住，再决定产品要接住哪一步。</p></div></article><article class="principle-card"><span class="method-number">02</span><div><h3>把人与资源放进同一条执行链</h3><p>把合作目标拆成参与者、职责、资源、流程和验证指标，让协同可以真正发生。</p></div></article><article class="principle-card"><span class="method-number">03</span><div><h3>让 AI 进入具体任务</h3><p>用 Codex 和工具衔接研究、制作与归档，把方向、事实审核和对外交付留给人。</p></div></article></div><aside class="article-teaser" aria-label="方法文章"><span class="eyebrow">方法文章</span><h2><a href="/notes/ai-creation-workflow/">从会用 AI，到搭建可交付的创作工作流 <span aria-hidden="true">↗</span></a></h2><p>问题定义、知识库、模型选型、图像与视频，再到实际工作台中的研究、编辑和归档。</p></aside></section><section class="home-section page-shell contact-section" id="contact" aria-labelledby="contact-title"><div><span class="eyebrow">联系我</span><h2 id="contact-title">有具体的问题，<br>我们可以一起聊聊。</h2><p>欢迎交流 AI 工作流、项目协作与活动组织。来信告诉我你正在做什么，希望我参与哪一部分。</p></div><div class="contact-card"><span class="contact-label">张熙 · 长沙</span><a class="contact-email" href="mailto:michalflowers245@gmail.com">michalflowers245@gmail.com</a><div class="contact-actions"><a class="primary-action" href="mailto:michalflowers245@gmail.com">发送邮件</a><button type="button" data-copy-email="michalflowers245@gmail.com" hidden>复制邮箱</button></div><p class="contact-feedback" data-contact-feedback role="status" aria-live="polite"></p></div></section></main>
+  <footer class="site-footer">
+    <div class="page-shell footer-inner">
+      <div><span class="eyebrow">张熙</span><h2>继续了解，或联系我。</h2></div>
+      <div class="footer-links"><a href="/work/">完整作品集</a><a href="/resume/">经历简历</a><a href="mailto:michalflowers245@gmail.com">michalflowers245@gmail.com</a></div>
+    </div>
+    <div class="footer-bottom page-shell"><span>张熙 · ZHANG XI</span><span>在长沙学习和生活</span><a href="#main-content">回到顶部 ↑</a></div>
+  </footer>
+  <dialog class="lightbox" aria-labelledby="lightbox-title" data-zoom="fit"><div class="lightbox-shell"><header><h2 id="lightbox-title">项目图片</h2><button type="button" data-lightbox-close aria-label="关闭大图">关闭 <span aria-hidden="true">×</span></button><div class="lightbox-tools" role="group" aria-label="图片查看方式"><button type="button" data-lightbox-mode="fit" data-lightbox-fit aria-pressed="true" aria-controls="lightbox-image-area">完整原图</button><button type="button" data-lightbox-mode="focus" data-lightbox-focus aria-pressed="false" aria-controls="lightbox-image-area" hidden>重点区域</button><button type="button" data-lightbox-mode="actual" data-lightbox-zoom aria-pressed="false" aria-controls="lightbox-image-area">原尺寸读字</button></div></header><div class="lightbox-image-area" id="lightbox-image-area" tabindex="0" aria-label="图片区域，原尺寸模式可滚动查看"><img data-lightbox-image alt=""><div class="lightbox-error" hidden><p>大图暂未加载。</p><button type="button" data-lightbox-retry>重新加载图片</button></div></div><div class="lightbox-caption-area"><p data-lightbox-focus-note hidden></p><p data-lightbox-caption></p></div><div class="lightbox-actions"><button type="button" data-lightbox-prev>上一张</button><span data-lightbox-count aria-live="polite"></span><button type="button" data-lightbox-next>下一张</button></div></div></dialog>
+</body>
+</html>

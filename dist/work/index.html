@@ -1,0 +1,254 @@
+<!doctype html>
+<html lang="zh-CN" data-theme="light">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#fff8e8" data-theme-color>
+  <meta name="description" content="张熙的作品集，按创业项目与平台、商务合作、技术产品、活动与传播四条主线展示。">
+  <meta property="og:title" content="项目与实践｜张熙">
+  <meta property="og:description" content="张熙的作品集，按创业项目与平台、商务合作、技术产品、活动与传播四条主线展示。">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="zh_CN">
+
+  <title>项目与实践｜张熙</title>
+  <script>(function initializeTheme(){
+  const root=document.documentElement;
+  let choice=null;
+  try{const saved=localStorage.getItem('zhangxi-theme-reference');if(saved==='light'||saved==='dark')choice=saved;}catch{}
+  if(choice)root.dataset.themeChoice=choice;else delete root.dataset.themeChoice;
+  root.dataset.theme=choice||(matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light');
+  document.querySelector('[data-theme-color]')?.setAttribute('content',root.dataset.theme==='dark'?'#181817':'#fff8e8');
+})();</script>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='10' fill='%23080b0e'/%3E%3Cpath d='M15 18h34v8H37v22h-9V26H15z' fill='%23d8b678'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="/assets/site.css?v=67253512da1cc3a2">
+  <link rel="stylesheet" href="/assets/folio.css?v=67253512da1cc3a2">
+  <link rel="stylesheet" href="/assets/media.css?v=67253512da1cc3a2">
+  <link rel="stylesheet" href="/assets/refine.css?v=67253512da1cc3a2">
+  <script type="module" src="/assets/site.js?v=67253512da1cc3a2"></script>
+  <meta property="og:site_name" content="张熙作品集">
+  <meta property="og:image" content="/assets/portfolio/portrait-original.jpg">
+  <meta property="og:image:alt" content="张熙个人照片">
+  <meta property="og:image:width" content="960">
+  <meta property="og:image:height" content="1440">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="项目与实践｜张熙">
+  <meta name="twitter:description" content="张熙的作品集，按创业项目与平台、商务合作、技术产品、活动与传播四条主线展示。">
+  <meta name="twitter:image" content="/assets/portfolio/portrait-original.jpg">
+  <meta name="twitter:image:alt" content="张熙个人照片">
+</head>
+<body class="page-work">
+  <a class="skip-link" href="#main-content">跳至正文</a>
+  <header class="site-header">
+    <div class="header-inner page-shell">
+      <a class="brand" href="/" aria-label="返回首页"><strong>张熙</strong><span>ZHANG XI</span></a>
+      <nav id="primary-navigation" aria-label="主导航">
+        <a href="/">首页</a><a href="/work/" aria-current="page">作品集</a><a href="/resume/">经历简历</a><a href="/about/">关于我</a><a href="/#contact">联系我</a>
+      </nav>
+      <div class="header-tools">
+        <button class="theme-toggle icon-button" type="button" aria-label="切换为深色主题" title="切换明暗主题"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="7.5"/><path d="M12 4.5v15a7.5 7.5 0 0 0 0-15Z" fill="currentColor" stroke="none"/></svg></button>
+        <button class="menu-toggle icon-button" type="button" aria-label="打开导航" aria-controls="primary-navigation" aria-expanded="false"><span></span><span></span></button>
+      </div>
+    </div>
+  </header>
+  <script>(function initializeShell(){
+  const root=document.documentElement;
+  const menu=document.querySelector('.menu-toggle'), nav=document.querySelector('#primary-navigation'),theme=document.querySelector('.theme-toggle');
+  const compact=matchMedia('(max-width:780px)'),systemTheme=matchMedia('(prefers-color-scheme: dark)');
+  let choice=['light','dark'].includes(root.dataset.themeChoice)?root.dataset.themeChoice:null;
+  let lastStoredChoice=choice,memoryOnlyChoice=false;
+  const syncTheme=()=>{const dark=root.dataset.theme==='dark';theme.setAttribute('aria-label',dark?'切换为浅色主题':'切换为深色主题');document.querySelector('[data-theme-color]')?.setAttribute('content',dark?'#181817':'#fff8e8');};
+  const applyTheme=()=>{if(choice)root.dataset.themeChoice=choice;else delete root.dataset.themeChoice;root.dataset.theme=choice||(systemTheme.matches?'dark':'light');syncTheme();};
+  const refreshStoredTheme=()=>{
+    let saved;
+    try{const value=localStorage.getItem('zhangxi-theme-reference');saved=value==='light'||value==='dark'?value:null;}catch{applyTheme();return;}
+    // A returned BFCache page adopts newer persisted choices. A failed local
+    // write keeps its in-memory choice unless a different valid choice appears.
+    if(!memoryOnlyChoice||(saved&&saved!==lastStoredChoice)){choice=saved;memoryOnlyChoice=false;}
+    lastStoredChoice=saved;applyTheme();
+  };
+  const menuOpen=()=>menu.getAttribute('aria-expanded')==='true';
+  const firstNavLink=()=>nav.querySelector('a[href]');
+  let lastFocused=null,wasCompact=compact.matches;
+  const setMenu=(open,restore=false)=>{
+    // Only reclaim focus when closing the region which still owns it.
+    const returnFocus=!open&&compact.matches&&(restore||nav.contains(document.activeElement));
+    if(returnFocus)menu.focus({preventScroll:true});
+    menu.setAttribute('aria-expanded',String(open));menu.setAttribute('aria-label',open?'关闭导航':'打开导航');
+    nav.toggleAttribute('data-open',open);if(open)nav.scrollTop=0;
+  };
+  theme.addEventListener('click',()=>{choice=root.dataset.theme==='dark'?'light':'dark';try{localStorage.setItem('zhangxi-theme-reference',choice);lastStoredChoice=choice;memoryOnlyChoice=false;}catch{memoryOnlyChoice=true;}applyTheme();});
+  systemTheme.addEventListener('change',()=>{if(!choice)applyTheme();});
+  window.addEventListener('pageshow',refreshStoredTheme);
+  window.addEventListener('storage',event=>{if(event.key===null||event.key==='zhangxi-theme-reference')refreshStoredTheme();});
+  menu.addEventListener('click',event=>{
+    const open=!menuOpen();setMenu(open);
+    // Keyboard / assistive activation enters the disclosure; pointer opening does not steal focus.
+    if(open&&event.detail===0)firstNavLink()?.focus({preventScroll:true});
+  });
+  menu.addEventListener('keydown',event=>{
+    // Also support switching from a pointer-opened disclosure to keyboard navigation.
+    if(event.key==='Tab'&&!event.shiftKey&&menuOpen()){
+      event.preventDefault();firstNavLink()?.focus({preventScroll:true});
+    }
+  });
+  nav.addEventListener('click',event=>{
+    if(event.target.closest('a')&&event.button===0&&!event.metaKey&&!event.ctrlKey&&!event.shiftKey&&!event.altKey)setMenu(false);
+  });
+  document.addEventListener('focusin',event=>{
+    lastFocused=event.target;
+    // This is a non-modal disclosure: forward and reverse Tab may leave it normally.
+    if(menuOpen()&&!nav.contains(event.target)&&event.target!==menu)setMenu(false);
+  });
+  document.addEventListener('focusout',event=>{
+    // Preserve the owner when CSS hides it, regardless of media-query/blur order.
+    // A move from a visible control to blank content is not a resize focus request.
+    if(!event.relatedTarget&&compact.matches===wasCompact&&event.target.getClientRects().length)lastFocused=null;
+  });
+  document.addEventListener('keydown',event=>{
+    if(event.key==='Escape'&&menuOpen()){event.preventDefault();setMenu(false,true);}
+  });
+  document.addEventListener('click',event=>{if(!event.target.closest('.site-header')&&menuOpen())setMenu(false);});
+  compact.addEventListener('change',()=>{
+    const active=document.activeElement===document.body?lastFocused:document.activeElement;
+    const toMenu=compact.matches&&nav.contains(active),toNav=!compact.matches&&active===menu;
+    wasCompact=compact.matches;setMenu(false);
+    if(toMenu)menu.focus({preventScroll:true});else if(toNav)firstNavLink()?.focus({preventScroll:true});
+  });applyTheme();root.classList.add('has-js');
+})();</script>
+  <main id="main-content"><section class="page-hero page-shell"><div class="page-hero-top"><span>作品集 · 2024—2026</span></div><h1>项目与实践</h1><p>从团队运营到产品设计，选择一个方向，看具体工作与交付。</p><nav class="page-hero-tags" aria-label="作品分类"><a href="#venture">创业项目与平台</a><a href="#partnership">商务合作</a><a href="#product">技术产品</a><a href="#events">活动与传播</a></nav></section><div class="page-shell work-groups"><section class="work-group" id="venture"><header class="work-group-header"><span class="group-number">01</span><div><h2>创业项目与平台</h2><p>从组团队、做服务，到经营青年创业者平台。</p></div></header><div class="project-grid"><article class="project-card project-card-text" id="card-tongluren-01" data-project="tongluren">
+
+    <div class="project-card-body"><div class="card-eyebrow"><span>社群创业</span><time>2024.05 起</time></div>
+      <h3><a id="card-tongluren-01-title" href="/work/tongluren/" data-project-link="tongluren">同路人工作室</a></h3><p class="project-summary">把分散的项目研究组织成团队协作与社群服务。早期组建 7 人团队，后续形成 AMD 校园共创与设备体验方案。</p><p class="project-role"><span>我的工作</span>作为联合创始人组织研究、团队与社群服务。</p><p class="project-status">创业工作室 · 社群与项目协作</p>
+
+      <a class="branch-link" href="/work/amd-ai-campus/">分支项目：AMD 校园 AI 共创</a>
+
+
+      <a class="detail-link" id="card-tongluren-01-evidence" href="/work/tongluren/#case-tongluren-7" data-project-link="tongluren">查看工作室交付 <span aria-hidden="true">→</span></a>
+    </div></article><article class="project-card project-card-text" id="card-bluecut-education-02" data-project="bluecut-education">
+
+    <div class="project-card-body"><div class="card-eyebrow"><span>教育服务创业</span><time>2024.09 — 2025.03</time></div>
+      <h3><a id="card-bluecut-education-02-title" href="/work/bluecut-education/" data-project-link="bluecut-education">蓝切线教育工作室</a></h3><p class="project-summary">从招生、教师筛选到师生匹配与反馈，建立教育服务流程。阶段累计服务 500+ 名学生，将个人撮合转为团队交付。</p><p class="project-role"><span>我的工作</span>统筹招生、教师筛选、团队协作与服务质量。</p><p class="project-status">阶段性经营项目</p>
+
+
+
+
+      <a class="detail-link" id="card-bluecut-education-02-evidence" href="/work/bluecut-education/#case-bluecut-education-4" data-project-link="bluecut-education">查看服务流程 <span aria-hidden="true">→</span></a>
+    </div></article><article class="project-card" id="card-xingcheng-maker-03" data-project="xingcheng-maker">
+    <a class="project-visual" id="card-xingcheng-maker-03-image" href="/work/xingcheng-maker/" data-project-link="xingcheng-maker" aria-label="查看星城创客项目详情"><img src="/assets/portfolio/xingcheng-cafe-talk-960.webp" srcset="/assets/portfolio/xingcheng-cafe-talk-160.webp 160w, /assets/portfolio/xingcheng-cafe-talk-480.webp 480w, /assets/portfolio/xingcheng-cafe-talk-960.webp 960w, /assets/portfolio/xingcheng-cafe-talk-1440.webp 1440w" sizes="(max-width: 600px) calc(100vw - 72px), (max-width: 1000px) 42vw, 550px" width="1505" height="1080" alt="星城创客项目记录中的咖啡厅主题分享，讲者与听众同框" loading="lazy" decoding="async"></a>
+    <div class="project-card-body"><div class="card-eyebrow"><span>青年创业平台</span><time>2025.03 — 至今</time></div>
+      <h3><a id="card-xingcheng-maker-03-title" href="/work/xingcheng-maker/" data-project-link="xingcheng-maker">星城创客</a></h3><p class="project-summary">为青年创业者组织主题沙龙，串联嘉宾、招募、主持与需求收集；通过社群延续交流，连接人与项目资源。</p><p class="project-role"><span>我的工作</span>负责主题策划、主持与活动后的资源连接。</p><p class="project-status">平台持续运营</p>
+
+
+
+
+      <a class="detail-link" id="card-xingcheng-maker-03-evidence" href="/work/xingcheng-maker/#case-xingcheng-maker-4" data-project-link="xingcheng-maker">查看活动记录 <span aria-hidden="true">→</span></a>
+    </div></article></div></section><section class="work-group" id="partnership"><header class="work-group-header"><span class="group-number">02</span><div><h2>商务合作</h2><p>同路人工作室的校园合作分支：AMD AI 共创。</p></div></header><div class="project-grid"><article class="project-card project-card-text" id="card-amd-ai-campus-01" data-project="amd-ai-campus">
+
+    <div class="project-card-body"><div class="card-eyebrow"><span>同路人分支 · AI 共创</span><time>2026</time></div>
+      <h3><a id="card-amd-ai-campus-01-title" href="/work/amd-ai-campus/" data-project-link="amd-ai-campus">AMD 校园 AI 共创</a></h3><p class="project-summary">同路人工作室的校园合作分支。连接企业与学生 AI 实践需求，形成共创、PK、沟通、执行、物料和设备体验六类方案。</p><p class="project-role"><span>我的工作</span>负责合作沟通、参与机制与执行准备方案。</p><p class="project-status">同路人分支 · 活动与设备体验方案</p>
+      <a class="branch-link" href="/work/tongluren/">所属工作室：同路人工作室</a>
+
+
+
+      <a class="detail-link" id="card-amd-ai-campus-01-evidence" href="/work/amd-ai-campus/#case-amd-ai-campus-7" data-project-link="amd-ai-campus">查看六类方案交付 <span aria-hidden="true">→</span></a>
+    </div></article></div></section><section class="work-group" id="product"><header class="work-group-header"><span class="group-number">03</span><div><h2>技术产品</h2><p>围绕真实需求设计 AI 产品、教育工具与工作流。</p></div></header><div class="project-grid"><article class="project-card" id="card-rally-01" data-project="rally">
+    <a class="project-visual" id="card-rally-01-image" href="/work/rally/" data-project-link="rally" aria-label="查看Mazi 活动众筹平台项目详情"><img src="/assets/portfolio/mazi-shared-wishes-960.webp" srcset="/assets/portfolio/mazi-shared-wishes-160.webp 160w, /assets/portfolio/mazi-shared-wishes-480.webp 480w, /assets/portfolio/mazi-shared-wishes-960.webp 960w, /assets/portfolio/mazi-shared-wishes-1440.webp 1440w" sizes="(max-width: 600px) calc(100vw - 72px), (max-width: 1000px) 42vw, 550px" width="2500" height="1260" alt="Mazi点场板真实截图，包含申请点场入口、三张活动需求卡片、地区与待接办状态" loading="lazy" decoding="async"></a>
+    <div class="project-card-body"><div class="card-eyebrow"><span>活动众筹与票务 · 原 Rally</span><time>项目持续迭代</time></div>
+      <h3><a id="card-rally-01-title" href="/work/rally/" data-project-link="rally">Mazi 活动众筹平台</a></h3><p class="project-summary">面向北美本地活动，把点场需求、愿付价格与主办方承接连起来，再通过众筹报名、锁单、票券与履约组织活动。已有可访问的 Mazi 网站；本案例结合真实界面与工程实现，说明产品流程和当前阶段。</p><p class="project-role"><span>我的工作</span>参与需求与业务规则设计，梳理三方流程并推进技术协作与交付验收。</p><p class="project-status">公开站点可访问 · 交易链路待验收</p>
+
+
+      <p class="card-perspective">产品视角 · 公开网站与三方工程</p>
+
+      <a class="detail-link" id="card-rally-01-evidence" href="/work/rally/#case-rally-5" data-project-link="rally">查看线上实拍与产品界面 <span aria-hidden="true">→</span></a>
+    </div></article><article class="project-card" id="card-kuaizhai-web-clipper-02" data-project="kuaizhai-web-clipper">
+    <a class="project-visual" id="card-kuaizhai-web-clipper-02-image" href="/work/kuaizhai-web-clipper/" data-project-link="kuaizhai-web-clipper" aria-label="查看AI Web Clipper｜快摘项目详情"><img src="/assets/portfolio/clipper-capture-960.webp" srcset="/assets/portfolio/clipper-capture-480.webp 480w, /assets/portfolio/clipper-capture-960.webp 960w, /assets/portfolio/clipper-capture-1440.webp 1440w" sizes="(max-width: 600px) calc(100vw - 72px), (max-width: 1000px) 42vw, 550px" width="1574" height="750" alt="快摘原网页与插件采集结果同屏对照，右侧保留图片与图注" loading="lazy" decoding="async"></a>
+    <div class="project-card-body"><div class="card-eyebrow"><span>AI 信息处理产品</span><time>2026.04 — 2026.05</time></div>
+      <h3><a id="card-kuaizhai-web-clipper-02-title" href="/work/kuaizhai-web-clipper/" data-project-link="kuaizhai-web-clipper">AI Web Clipper｜快摘</a></h3><p class="project-summary">将网页与选中文本整理成带来源的 Markdown，支持编辑、专题归档和导出。组织 50–60 位用户体验，验证信息复用流程。</p><p class="project-role"><span>我的工作</span>负责需求拆解、流程设计与体验测试组织。</p><p class="project-status">用户体验测试 · 产品阶段验证</p>
+
+
+
+
+      <a class="detail-link" id="card-kuaizhai-web-clipper-02-evidence" href="/work/kuaizhai-web-clipper/#case-kuaizhai-web-clipper-5" data-project-link="kuaizhai-web-clipper">查看真实界面与导出流程 <span aria-hidden="true">→</span></a>
+    </div></article><article class="project-card" id="card-shujian-financial-brief-03" data-project="shujian-financial-brief">
+    <a class="project-visual" id="card-shujian-financial-brief-03-image" href="/work/shujian-financial-brief/" data-project-link="shujian-financial-brief" aria-label="查看数鉴｜AI 财报简报引擎项目详情"><img src="/assets/projects/shujian-binding-original.jpg" width="1672" height="941" alt="数鉴方案示意，将图表数字关联到分类项、系列、单位和来源页码" loading="lazy" decoding="async"></a>
+    <div class="project-card-body"><div class="card-eyebrow"><span>企业 AI · 管理简报</span><time>2026.05 — 2026.06</time></div>
+      <h3><a id="card-shujian-financial-brief-03-title" href="/work/shujian-financial-brief/" data-project-link="shujian-financial-brief">数鉴｜AI 财报简报引擎</a></h3><p class="project-summary">设计财报指标关联、人工复核到管理简报的流程。当前完成需求框架、Demo 方案与限定测试集验证，完整简报仍是后续目标。</p><p class="project-role"><span>我的工作</span>负责需求框架、产品流程与 Demo 协作。</p><p class="project-status">产品方案与 Demo · 阶段性技术验证</p>
+
+
+
+
+      <a class="detail-link" id="card-shujian-financial-brief-03-evidence" href="/work/shujian-financial-brief/#case-shujian-financial-brief-5" data-project-link="shujian-financial-brief">查看方案与材料 <span aria-hidden="true">→</span></a>
+    </div></article><article class="project-card" id="card-education-tools-04" data-project="education-tools">
+    <a class="project-visual" id="card-education-tools-04-image" href="/work/education-tools/" data-project-link="education-tools" aria-label="查看物理工作台与真题分析工具链项目详情"><img src="/assets/portfolio/education-sheet-1-827.webp" srcset="/assets/portfolio/education-sheet-1-480.webp 480w, /assets/portfolio/education-sheet-1-827.webp 827w" sizes="(max-width: 600px) calc(100vw - 72px), (max-width: 1000px) 42vw, 550px" width="827" height="1170" alt="软件验收题单第1页，含非教师发布标识、第1题及第2题和续题图" loading="lazy" decoding="async"></a>
+    <div class="project-card-body"><div class="card-eyebrow"><span>教育数字化 · 本地工作台与题单引擎</span><time>2026 · 本地持续迭代</time></div>
+      <h3><a id="card-education-tools-04-title" href="/work/education-tools/" data-project-link="education-tools">物理工作台与真题分析工具链</a></h3><p class="project-summary">把答卷反馈、真题检索和题单导出接入教师工作流程。物理工作台与题单工具本地实现，教育 Agent 单独展示系统设计。</p><p class="project-role"><span>我的工作</span>负责教学需求拆解、数据流程与工具协作。</p><p class="project-status">本地工作台与技术方案 · 教师保留关键确认权</p>
+
+
+
+
+      <a class="detail-link" id="card-education-tools-04-evidence" href="/work/education-tools/#case-education-tools-5" data-project-link="education-tools">查看完整题单样张 <span aria-hidden="true">→</span></a>
+    </div></article><article class="project-card project-card-text" id="card-opc-ai-workflow-05" data-project="opc-ai-workflow">
+
+    <div class="project-card-body"><div class="card-eyebrow"><span>OPC · AI 工作流与内容工作台</span><time>2026.05 — 至今</time></div>
+      <h3><a id="card-opc-ai-workflow-05-title" href="/work/opc-ai-workflow/" data-project-link="opc-ai-workflow">OPC 与 AI 工作流</a></h3><p class="project-summary">从五城 75 个同行研究候选中梳理业务方向，用 AI 与 Codex 搭建本地工作台，明确人的判断与 AI 执行如何衔接。</p><p class="project-role"><span>我的工作</span>负责业务研究、人机分工与工作台设计。</p><p class="project-status">业务研究 · 本地工作台与试点方案</p>
+
+
+
+      <a class="branch-link" href="/work/opc-campaign/">延伸方案：OPC 线下推广</a>
+      <a class="detail-link" id="card-opc-ai-workflow-05-evidence" href="/work/opc-ai-workflow/#case-opc-ai-workflow-6" data-project-link="opc-ai-workflow">查看任务拆解案例 <span aria-hidden="true">→</span></a>
+    </div></article><article class="project-card project-card-text" id="card-ai-copy-workbench-06" data-project="ai-copy-workbench">
+
+    <div class="project-card-body"><div class="card-eyebrow"><span>AI 文案助手 · 本地工作台</span><time>2026 · 本地持续迭代</time></div>
+      <h3><a id="card-ai-copy-workbench-06-title" href="/work/ai-copy-workbench/" data-project-link="ai-copy-workbench">闪聚星球 AI 文案工作台</a></h3><p class="project-summary">四类入口接收真实素材，由 AI 分阶段研究、写作与编辑，使用者确认后采用；保留来源、改写版本与失败恢复记录。</p><p class="project-role"><span>我的工作</span>设计创作流程、审核与作品管理，并借助 AI 协作实现。</p><p class="project-status">本地应用 · 持续迭代与验证</p>
+
+
+
+
+      <a class="detail-link" id="card-ai-copy-workbench-06-evidence" href="/work/ai-copy-workbench/#case-ai-copy-workbench-5" data-project-link="ai-copy-workbench">查看任务过程与稿件节选 <span aria-hidden="true">→</span></a>
+    </div></article></div></section><section class="work-group" id="events"><header class="work-group-header"><span class="group-number">04</span><div><h2>活动与传播</h2><p>活动主持、线下推广、内容传播，以及产品在活动场景中的应用。</p></div></header><div class="project-grid"><article class="project-card" id="card-xingcheng-maker-01" data-project="xingcheng-maker">
+    <a class="project-visual" id="card-xingcheng-maker-01-image" href="/work/xingcheng-maker/" data-project-link="xingcheng-maker" aria-label="查看星城创客｜青年创业活动运营项目详情"><img src="/assets/portfolio/xingcheng-cafe-talk-960.webp" srcset="/assets/portfolio/xingcheng-cafe-talk-160.webp 160w, /assets/portfolio/xingcheng-cafe-talk-480.webp 480w, /assets/portfolio/xingcheng-cafe-talk-960.webp 960w, /assets/portfolio/xingcheng-cafe-talk-1440.webp 1440w" sizes="(max-width: 600px) calc(100vw - 72px), (max-width: 1000px) 42vw, 550px" width="1505" height="1080" alt="星城创客项目记录中的咖啡厅主题分享，讲者与听众同框" loading="lazy" decoding="async"></a>
+    <div class="project-card-body"><div class="card-eyebrow"><span>主办与主持</span><time>2025.03 — 至今</time></div>
+      <h3><a id="card-xingcheng-maker-01-title" href="/work/xingcheng-maker/" data-project-link="xingcheng-maker">星城创客｜青年创业活动运营</a></h3><p class="project-summary">围绕创业、AI、产品与资源连接组织活动。从主题档案到第 93 期主持案例，展开嘉宾衔接、现场节奏、提问与后续连接。</p><p class="project-role"><span>我的工作</span>负责主题策划、主持与活动后的资源连接。</p><p class="project-status">平台持续运营</p>
+
+
+
+
+      <a class="detail-link" id="card-xingcheng-maker-01-evidence" href="/work/xingcheng-maker/#case-xingcheng-maker-5" data-project-link="xingcheng-maker">阅读第93期主持设计 <span aria-hidden="true">→</span></a>
+    </div></article><article class="project-card" id="card-rally-02" data-project="rally">
+    <a class="project-visual" id="card-rally-02-image" href="/work/rally/" data-project-link="rally" aria-label="查看Mazi｜让活动需求可验证项目详情"><img src="/assets/portfolio/mazi-shared-wishes-960.webp" srcset="/assets/portfolio/mazi-shared-wishes-160.webp 160w, /assets/portfolio/mazi-shared-wishes-480.webp 480w, /assets/portfolio/mazi-shared-wishes-960.webp 960w, /assets/portfolio/mazi-shared-wishes-1440.webp 1440w" sizes="(max-width: 600px) calc(100vw - 72px), (max-width: 1000px) 42vw, 550px" width="2500" height="1260" alt="Mazi点场板真实截图，包含申请点场入口、三张活动需求卡片、地区与待接办状态" loading="lazy" decoding="async"></a>
+    <div class="project-card-body"><div class="card-eyebrow"><span>活动组织的产品化</span><time>项目持续迭代</time></div>
+      <h3><a id="card-rally-02-title" href="/work/rally/" data-project-link="rally">Mazi｜让活动需求可验证</a></h3><p class="project-summary">从点场偏好与愿付价格，到主办方承接、报名、成团和履约。这里重点说明活动组织如何转成产品规则；公开站点已可访问，真实交易与活动经营结果另待验证。</p><p class="project-role"><span>我的工作</span>参与需求与业务规则设计，梳理三方流程并推进技术协作与交付验收。</p><p class="project-status">公开站点可访问 · 交易链路待验收</p>
+
+
+      <p class="card-perspective">活动视角 · 与技术产品共用案例</p>
+
+      <a class="detail-link" id="card-rally-02-evidence" href="/work/rally/#case-rally-6" data-project-link="rally">查看异常处理与出票门槛 <span aria-hidden="true">→</span></a>
+    </div></article><article class="project-card" id="card-opc-campaign-03" data-project="opc-campaign">
+    <a class="project-visual" id="card-opc-campaign-03-image" href="/work/opc-campaign/" data-project-link="opc-campaign" aria-label="查看OPC｜线下推广项目详情"><img src="/assets/portfolio/opc-program-cover-960.webp" srcset="/assets/portfolio/opc-program-cover-160.webp 160w, /assets/portfolio/opc-program-cover-480.webp 480w, /assets/portfolio/opc-program-cover-960.webp 960w, /assets/portfolio/opc-program-cover-1440.webp 1440w" sizes="(max-width: 600px) calc(100vw - 72px), (max-width: 1000px) 42vw, 550px" width="1684" height="1191" alt="OPC线下活动主题方案封面，列出个人能力、内容创作与商业机会探索方向" loading="lazy" decoding="async"></a>
+    <div class="project-card-body"><div class="card-eyebrow"><span>推广与试点方案</span><time>2026.05 — 至今</time></div>
+      <h3><a id="card-opc-campaign-03-title" href="/work/opc-campaign/" data-project-link="opc-campaign">OPC｜线下推广</a></h3><p class="project-summary">以真实任务设计体验课，明确宣讲与合作方分工，并补充 Seedance 从流量、渠道、转化到持续服务的方案。</p><p class="project-role"><span>我的工作</span>设计招募、体验课、合作分工与后续服务路径。</p><p class="project-status">推广与试点方案</p>
+
+
+
+      <a class="branch-link" href="/work/opc-ai-workflow/">方法来源：OPC 与 AI 工作流</a>
+      <a class="detail-link" id="card-opc-campaign-03-evidence" href="/work/opc-campaign/#case-opc-campaign-4" data-project-link="opc-campaign">查看课程方案 <span aria-hidden="true">→</span></a>
+    </div></article><article class="project-card project-card-text" id="card-variational-activities-04" data-project="variational-activities">
+
+    <div class="project-card-body"><div class="card-eyebrow"><span>资料与主持</span><time>2026</time></div>
+      <h3><a id="card-variational-activities-04-title" href="/work/variational-activities/" data-project-link="variational-activities">Variational｜活动主持与周复盘</a></h3><p class="project-summary">通过资料核验、主持串场、时间控制和点评衔接设计活动沟通，再用周复盘提纲梳理下一步问题。</p><p class="project-role"><span>我的工作</span>整理资料、主持串场并组织周汇报与复盘。</p><p class="project-status">主持流程与复盘方法</p>
+
+
+
+
+      <a class="detail-link" id="card-variational-activities-04-evidence" href="/work/variational-activities/#case-variational-activities-5" data-project-link="variational-activities">查看主持串场案例 <span aria-hidden="true">→</span></a>
+    </div></article></div></section></div></main>
+  <footer class="site-footer">
+    <div class="page-shell footer-inner">
+      <div><span class="eyebrow">张熙</span><h2>继续了解，或联系我。</h2></div>
+      <div class="footer-links"><a href="/work/">完整作品集</a><a href="/resume/">经历简历</a><a href="mailto:michalflowers245@gmail.com">michalflowers245@gmail.com</a></div>
+    </div>
+    <div class="footer-bottom page-shell"><span>张熙 · ZHANG XI</span><span>在长沙学习和生活</span><a href="#main-content">回到顶部 ↑</a></div>
+  </footer>
+  <dialog class="lightbox" aria-labelledby="lightbox-title" data-zoom="fit"><div class="lightbox-shell"><header><h2 id="lightbox-title">项目图片</h2><button type="button" data-lightbox-close aria-label="关闭大图">关闭 <span aria-hidden="true">×</span></button><div class="lightbox-tools" role="group" aria-label="图片查看方式"><button type="button" data-lightbox-mode="fit" data-lightbox-fit aria-pressed="true" aria-controls="lightbox-image-area">完整原图</button><button type="button" data-lightbox-mode="focus" data-lightbox-focus aria-pressed="false" aria-controls="lightbox-image-area" hidden>重点区域</button><button type="button" data-lightbox-mode="actual" data-lightbox-zoom aria-pressed="false" aria-controls="lightbox-image-area">原尺寸读字</button></div></header><div class="lightbox-image-area" id="lightbox-image-area" tabindex="0" aria-label="图片区域，原尺寸模式可滚动查看"><img data-lightbox-image alt=""><div class="lightbox-error" hidden><p>大图暂未加载。</p><button type="button" data-lightbox-retry>重新加载图片</button></div></div><div class="lightbox-caption-area"><p data-lightbox-focus-note hidden></p><p data-lightbox-caption></p></div><div class="lightbox-actions"><button type="button" data-lightbox-prev>上一张</button><span data-lightbox-count aria-live="polite"></span><button type="button" data-lightbox-next>下一张</button></div></div></dialog>
+</body>
+</html>

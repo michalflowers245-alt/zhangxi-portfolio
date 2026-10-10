@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang="zh-CN" data-theme="light">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#fff8e8" data-theme-color>
+  <meta name="description" content="从五城 75 个同行研究候选中梳理业务方向，用 AI 与 Codex 搭建本地工作台，明确人的判断与 AI 执行如何衔接。">
+  <meta property="og:title" content="OPC 与 AI 工作流｜张熙作品集">
+  <meta property="og:description" content="从五城 75 个同行研究候选中梳理业务方向，用 AI 与 Codex 搭建本地工作台，明确人的判断与 AI 执行如何衔接。">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="zh_CN">
+
+  <title>OPC 与 AI 工作流｜张熙作品集</title>
+  <script>(function initializeTheme(){
+  const root=document.documentElement;
+  let choice=null;
+  try{const saved=localStorage.getItem('zhangxi-theme-reference');if(saved==='light'||saved==='dark')choice=saved;}catch{}
+  if(choice)root.dataset.themeChoice=choice;else delete root.dataset.themeChoice;
+  root.dataset.theme=choice||(matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light');
+  document.querySelector('[data-theme-color]')?.setAttribute('content',root.dataset.theme==='dark'?'#181817':'#fff8e8');
+})();</script>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='10' fill='%23080b0e'/%3E%3Cpath d='M15 18h34v8H37v22h-9V26H15z' fill='%23d8b678'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="/assets/site.css?v=67253512da1cc3a2">
+  <link rel="stylesheet" href="/assets/folio.css?v=67253512da1cc3a2">
+  <link rel="stylesheet" href="/assets/media.css?v=67253512da1cc3a2">
+  <link rel="stylesheet" href="/assets/refine.css?v=67253512da1cc3a2">
+  <script type="module" src="/assets/site.js?v=67253512da1cc3a2"></script>
+  <meta property="og:site_name" content="张熙作品集">
+  <meta property="og:image" content="/assets/portfolio/portrait-original.jpg">
+  <meta property="og:image:alt" content="张熙个人照片">
+  <meta property="og:image:width" content="960">
+  <meta property="og:image:height" content="1440">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="OPC 与 AI 工作流｜张熙作品集">
+  <meta name="twitter:description" content="从五城 75 个同行研究候选中梳理业务方向，用 AI 与 Codex 搭建本地工作台，明确人的判断与 AI 执行如何衔接。">
+  <meta name="twitter:image" content="/assets/portfolio/portrait-original.jpg">
+  <meta name="twitter:image:alt" content="张熙个人照片">
+</head>
+<body class="page-work">
+  <a class="skip-link" href="#main-content">跳至正文</a>
+  <header class="site-header">
+    <div class="header-inner page-shell">
+      <a class="brand" href="/" aria-label="返回首页"><strong>张熙</strong><span>ZHANG XI</span></a>
+      <nav id="primary-navigation" aria-label="主导航">
+        <a href="/">首页</a><a href="/work/" aria-current="page">作品集</a><a href="/resume/">经历简历</a><a href="/about/">关于我</a><a href="/#contact">联系我</a>
+      </nav>
+      <div class="header-tools">
+        <button class="theme-toggle icon-button" type="button" aria-label="切换为深色主题" title="切换明暗主题"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="7.5"/><path d="M12 4.5v15a7.5 7.5 0 0 0 0-15Z" fill="currentColor" stroke="none"/></svg></button>
+        <button class="menu-toggle icon-button" type="button" aria-label="打开导航" aria-controls="primary-navigation" aria-expanded="false"><span></span><span></span></button>
+      </div>
+    </div>
+  </header>
+  <script>(function initializeShell(){
+  const root=document.documentElement;
+  const menu=document.querySelector('.menu-toggle'), nav=document.querySelector('#primary-navigation'),theme=document.querySelector('.theme-toggle');
+  const compact=matchMedia('(max-width:780px)'),systemTheme=matchMedia('(prefers-color-scheme: dark)');
+  let choice=['light','dark'].includes(root.dataset.themeChoice)?root.dataset.themeChoice:null;
+  let lastStoredChoice=choice,memoryOnlyChoice=false;
+  const syncTheme=()=>{const dark=root.dataset.theme==='dark';theme.setAttribute('aria-label',dark?'切换为浅色主题':'切换为深色主题');document.querySelector('[data-theme-color]')?.setAttribute('content',dark?'#181817':'#fff8e8');};
+  const applyTheme=()=>{if(choice)root.dataset.themeChoice=choice;else delete root.dataset.themeChoice;root.dataset.theme=choice||(systemTheme.matches?'dark':'light');syncTheme();};
+  const refreshStoredTheme=()=>{
+    let saved;
+    try{const value=localStorage.getItem('zhangxi-theme-reference');saved=value==='light'||value==='dark'?value:null;}catch{applyTheme();return;}
+    // A returned BFCache page adopts newer persisted choices. A failed local
+    // write keeps its in-memory choice unless a different valid choice appears.
+    if(!memoryOnlyChoice||(saved&&saved!==lastStoredChoice)){choice=saved;memoryOnlyChoice=false;}
+    lastStoredChoice=saved;applyTheme();
+  };
+  const menuOpen=()=>menu.getAttribute('aria-expanded')==='true';
+  const firstNavLink=()=>nav.querySelector('a[href]');
+  let lastFocused=null,wasCompact=compact.matches;
+  const setMenu=(open,restore=false)=>{
+    // Only reclaim focus when closing the region which still owns it.
+    const returnFocus=!open&&compact.matches&&(restore||nav.contains(document.activeElement));
+    if(returnFocus)menu.focus({preventScroll:true});
+    menu.setAttribute('aria-expanded',String(open));menu.setAttribute('aria-label',open?'关闭导航':'打开导航');
+    nav.toggleAttribute('data-open',open);if(open)nav.scrollTop=0;
+  };
+  theme.addEventListener('click',()=>{choice=root.dataset.theme==='dark'?'light':'dark';try{localStorage.setItem('zhangxi-theme-reference',choice);lastStoredChoice=choice;memoryOnlyChoice=false;}catch{memoryOnlyChoice=true;}applyTheme();});
+  systemTheme.addEventListener('change',()=>{if(!choice)applyTheme();});
+  window.addEventListener('pageshow',refreshStoredTheme);
+  window.addEventListener('storage',event=>{if(event.key===null||event.key==='zhangxi-theme-reference')refreshStoredTheme();});
+  menu.addEventListener('click',event=>{
+    const open=!menuOpen();setMenu(open);
+    // Keyboard / assistive activation enters the disclosure; pointer opening does not steal focus.
+    if(open&&event.detail===0)firstNavLink()?.focus({preventScroll:true});
+  });
+  menu.addEventListener('keydown',event=>{
+    // Also support switching from a pointer-opened disclosure to keyboard navigation.
+    if(event.key==='Tab'&&!event.shiftKey&&menuOpen()){
+      event.preventDefault();firstNavLink()?.focus({preventScroll:true});
+    }
+  });
+  nav.addEventListener('click',event=>{
+    if(event.target.closest('a')&&event.button===0&&!event.metaKey&&!event.ctrlKey&&!event.shiftKey&&!event.altKey)setMenu(false);
+  });
+  document.addEventListener('focusin',event=>{
+    lastFocused=event.target;
+    // This is a non-modal disclosure: forward and reverse Tab may leave it normally.
+    if(menuOpen()&&!nav.contains(event.target)&&event.target!==menu)setMenu(false);
+  });
+  document.addEventListener('focusout',event=>{
+    // Preserve the owner when CSS hides it, regardless of media-query/blur order.
+    // A move from a visible control to blank content is not a resize focus request.
+    if(!event.relatedTarget&&compact.matches===wasCompact&&event.target.getClientRects().length)lastFocused=null;
+  });
+  document.addEventListener('keydown',event=>{
+    if(event.key==='Escape'&&menuOpen()){event.preventDefault();setMenu(false,true);}
+  });
+  document.addEventListener('click',event=>{if(!event.target.closest('.site-header')&&menuOpen())setMenu(false);});
+  compact.addEventListener('change',()=>{
+    const active=document.activeElement===document.body?lastFocused:document.activeElement;
+    const toMenu=compact.matches&&nav.contains(active),toNav=!compact.matches&&active===menu;
+    wasCompact=compact.matches;setMenu(false);
+    if(toMenu)menu.focus({preventScroll:true});else if(toNav)firstNavLink()?.focus({preventScroll:true});
+  });applyTheme();root.classList.add('has-js');
+})();</script>
+  <main id="main-content"><article class="project-detail page-shell" data-case-reader>
+    <nav class="detail-breadcrumb" aria-label="项目位置"><a href="/work/">作品集</a><span aria-hidden="true">/</span><a href="/work/#product">技术产品</a></nav>
+    <p class="project-branch">产品方法与人机分工 · <a href="/work/opc-campaign/">延伸阅读：线下推广方案</a></p>
+    <header class="detail-hero">
+      <div class="detail-heading"><div class="detail-meta"><span class="project-type">OPC · AI 工作流与内容工作台</span><time>2026.05 — 至今</time></div><h1>OPC 与 AI 工作流</h1><p class="detail-role">项目负责人 / 产品与流程设计</p><p class="detail-intro">个人想用 AI 开始业务，却不清楚如何选择方向、做出第一个样品和验证真实需求；研究、内容与交付又分散在不同工具里。</p><div class="case-shortcuts"><a class="primary-action" data-evidence-link href="#case-opc-ai-workflow-6">查看任务拆解案例 <span aria-hidden="true">↓</span></a></div></div>
+    </header>
+    <section class="case-brief" aria-label="项目概览"><dl class="brief-fields"><div><dt>服务对象</dt><dd>用 AI 改善研究、内容与交付的个人及小团队。</dd></div><div><dt>我的工作</dt><dd>负责业务研究、人机分工与工作台设计。</dd></div><div class="brief-delivery"><dt>形成的交付</dt><dd>五城 75 个同行候选研究、业务筛选、人机任务分工、本地工作台与服务交付流程。</dd></div></dl><dl class="detail-facts"><div class="detail-fact"><dt>项目启动</dt><dd>2026.05</dd></div><div class="detail-fact"><dt>同行研究候选</dt><dd>75 个</dd></div><div class="detail-fact"><dt>服务交付分工</dt><dd>人 + AI</dd></div></dl><p class="case-stage"><strong>项目阶段：</strong>2026 年 5 月起持续研究与本地实践。75 个是研究候选，不是客户或合作方数量。</p></section>
+    <div class="case-reading"><nav class="case-contents" aria-label="本项目内容目录" data-case-toc><p class="eyebrow">阅读目录</p><button type="button" data-case-toc-toggle aria-expanded="true" aria-controls="case-toc-links" hidden><span>目录 · <span data-case-toc-current>从 2026 年 5 月开始：把 AI 能力放进个人业务</span></span><span data-case-toc-action aria-hidden="true">展开</span></button><ol id="case-toc-links"><li><a href="#case-opc-ai-workflow-1"><span aria-hidden="true">01</span>从 2026 年 5 月开始：把 AI 能力放进个人业务</a></li><li><a href="#case-opc-ai-workflow-2"><span aria-hidden="true">02</span>我的角色：连接用户、产品和交付负责人</a></li><li><a href="#case-opc-ai-workflow-3"><span aria-hidden="true">03</span>关键判断：先筛选能交付的方向，再选择工具</a></li><li><a href="#case-opc-ai-workflow-4"><span aria-hidden="true">04</span>研究方法：五城 75 个候选，建立比较框架</a></li><li><a href="#case-opc-ai-workflow-5"><span aria-hidden="true">05</span>服务机制：从个人诊断到样品与验证</a></li><li><a href="#case-opc-ai-workflow-6"><span aria-hidden="true">06</span>具体流程：把文案诉求拆成可验收任务</a></li><li><a href="#case-opc-ai-workflow-7"><span aria-hidden="true">07</span>交付：研究资产、业务流程与本地工作台</a></li><li><a href="#case-opc-ai-workflow-8"><span aria-hidden="true">08</span>复盘：一人公司仍然需要组织能力</a></li></ol><a class="reader-back" href="/work/" data-reading-back>返回作品集 <span aria-hidden="true">↗</span></a></nav>
+    <div class="case-chapters"><section class="case-chapter" id="case-opc-ai-workflow-1" tabindex="-1" aria-labelledby="case-opc-ai-workflow-1-title"><h2 id="case-opc-ai-workflow-1-title">从 2026 年 5 月开始：把 AI 能力放进个人业务</h2><p>从 2026 年 5 月开始，我把 OPC 与 AI 工作流作为同一方向推进，研究个人如何借助工具与协作完成业务交付。前期探索校园共创和职业转型，随后重点转向宝妈、转型者、希望验证副业的上班族等普通个体。</p><p>他们需要先选方向、做出第一个样品，再判断是否值得继续投入。因此，服务从个人诊断走向市场验证；校园共创保留为早期探索，企业内部培训作为研究参考与后续可能性。</p></section><section class="case-chapter" id="case-opc-ai-workflow-2" tabindex="-1" aria-labelledby="case-opc-ai-workflow-2-title"><h2 id="case-opc-ai-workflow-2-title">我的角色：连接用户、产品和交付负责人</h2><p>我负责需求与同行研究、业务框架、角色分工和工作流设计，借助 AI 与 Codex 推进本地工作台实现。专业技术或行业服务由合作方承接，我负责对齐用户问题、交付能力与验收要求。</p><p>流程区分内容获客、需求沟通、商务确认、交付和跟进：负责人统筹，销售承接需求，技术或服务方完成约定交付；收款确认、进度与反馈分别设置交接节点。</p></section><section class="case-chapter" id="case-opc-ai-workflow-3" tabindex="-1" aria-labelledby="case-opc-ai-workflow-3-title"><h2 id="case-opc-ai-workflow-3-title">关键判断：先筛选能交付的方向，再选择工具</h2><p>我用五道门筛选方向：目标人群能否开始，能否形成可展示成果，是否有明确付费方与交付物，能否说明投入和售后风险，以及能否记录真实结果。时间与样品周期是筛选条件，不是收益保证。</p><p>工具演示或收入截图不能代替交付依据。主体、服务范围、退款规则和结果尚不清楚的方向，先留在候选库，不直接进入首批服务。</p></section><section class="case-chapter" id="case-opc-ai-workflow-4" tabindex="-1" aria-labelledby="case-opc-ai-workflow-4-title"><h2 id="case-opc-ai-workflow-4-title">研究方法：五城 75 个候选，建立比较框架</h2><p>我整理了长沙、广州、深圳、杭州、北京五城的公开商业产品资料，每城 15 个，共 75 个研究候选，按产品介绍、宣传材料、来源与核验说明归档。它们不是我经营的产品、客户或已合作对象，候选数量也不等于验证数量。</p><p>比较目标人群、学习门槛、交付内容与周期、工具和培训的关系，再核对价格、合同、退款及经营案例，判断哪些能力适合起步、哪些交付可借鉴、哪些证据仍需补齐。</p></section><section class="case-chapter" id="case-opc-ai-workflow-5" tabindex="-1" aria-labelledby="case-opc-ai-workflow-5-title"><h2 id="case-opc-ai-workflow-5-title">服务机制：从个人诊断到样品与验证</h2><p>服务分为八个环节：个人诊断、匹配方向、学习一项可交付能力、完成作品或服务样品、寻找真实需求、完成交付、记录结果、决定升级或淘汰方向。诊断先看时间、经验、表达能力与资源，再选路径。</p><p>人负责方向、风险、关键事实与最终交付判断；AI 负责资料整理、初稿、重复格式处理和辅助检查。工作台串联输入、任务阶段、版本、审核意见与归档，让过程能够检查和继续。</p></section><section class="case-chapter" id="case-opc-ai-workflow-6" tabindex="-1" aria-labelledby="case-opc-ai-workflow-6-title"><h2 id="case-opc-ai-workflow-6-title">具体流程：把文案诉求拆成可验收任务</h2><aside class="case-path" data-case-path="opc-ai-workflow" data-path-kind="plan" aria-label="把文案诉求变成可验收任务"><h3>把文案诉求变成可验收任务</h3><ol><li><strong>明确任务</strong><span>先确认账号、受众与真实素材，选定计划、图文或口播等具体交付。</span></li><li><strong>人机分工</strong><span>我设计输入与验收边界；AI 辅助研究和起草，人保留事实与采用判断。</span></li><li><strong>工作台交付</strong><span>以样本测试初版，再修改并提供使用说明与培训；具体工具保留版本归档。</span></li></ol><p class="path-note">这里呈现业务与工作流方法；文案工作台是具体工具，线下推广另列方案。</p><div class="path-links"><a href="/work/ai-copy-workbench/">看文案工作台的实际任务 <span aria-hidden="true">↗</span></a><a href="/work/opc-campaign/">看线下体验与推广方案 <span aria-hidden="true">↗</span></a></div></aside><p>以内容需求为例，输入不仅是一个主题，还包括行业、账号定位、受众、过往内容、常见问题与风格；交付则区分朋友圈计划、图文稿和口播稿。输入与交付格式确定后，再进入原型和样本测试。</p><p>闪聚星球文案工作台将这条路径落到本地应用：素材与 IP 资料进入研究、写作、编辑，用户选择采用版本并带走正文，作品记录同时归档；来源核验、失败恢复与旧稿保留纳入过程。</p></section><section class="case-chapter" id="case-opc-ai-workflow-7" tabindex="-1" aria-labelledby="case-opc-ai-workflow-7-title"><h2 id="case-opc-ai-workflow-7-title">交付：研究资产、业务流程与本地工作台</h2><ul class="case-deliverables"><li>研究资产：五城候选库、目标用户定位与业务筛选标准。</li><li>服务模板：角色流程、需求诊断表和 Agent 交付执行表，按内容、报价、销售跟进等任务明确输入与验收输出。</li><li>本地内容工作台：连接素材、任务、人工确认和作品归档；线下体验课作为独立的用户体验入口。</li></ul></section><section class="case-chapter" id="case-opc-ai-workflow-8" tabindex="-1" aria-labelledby="case-opc-ai-workflow-8-title"><h2 id="case-opc-ai-workflow-8-title">复盘：一人公司仍然需要组织能力</h2><p>当前交付是业务研究、本地工作台与试点机制，实际付费、持续使用和复购仍需真实项目记录。下一步按投入、任务完成、交付质量与反馈，判断哪些方向应保持、优化或停止。</p><p>一人公司仍然需要分工：重复任务交给工具，关键判断与结果责任留给人。这也是我在资源连接之外，继续设计任务和交接机制的原因。</p></section></div>
+    </div>
+    <aside class="article-teaser" aria-label="延伸阅读：从人机分工到创作流程"><span class="eyebrow">延伸阅读：从人机分工到创作流程</span><h2><a href="/notes/ai-creation-workflow/">从会用 AI，到搭建可交付的创作工作流 <span aria-hidden="true">↗</span></a></h2><p>问题定义、知识库、模型选型、图像与视频，再到实际工作台中的研究、编辑和归档。</p></aside>
+    <section class="case-conversation" aria-labelledby="case-conversation-title"><div><p class="eyebrow">从这个案例继续聊</p><h2 id="case-conversation-title">你也在处理类似的问题？</h2><p>来信说明你的场景、目前卡住的环节，以及希望我参与哪一部分。</p></div><div class="contact-card"><a class="primary-action" href="mailto:michalflowers245@gmail.com?subject=%E5%85%B3%E4%BA%8E%E3%80%8COPC%20%E4%B8%8E%20AI%20%E5%B7%A5%E4%BD%9C%E6%B5%81%E3%80%8D%E7%9A%84%E4%BA%A4%E6%B5%81" data-case-contact>围绕这个项目交流 <span aria-hidden="true">↗</span></a><div class="case-contact-fallback"><a class="contact-email" href="mailto:michalflowers245@gmail.com">michalflowers245@gmail.com</a><button type="button" data-copy-email="michalflowers245@gmail.com" hidden>复制邮箱</button></div><p class="contact-feedback" data-contact-feedback role="status" aria-live="polite"></p></div></section>
+    <div class="detail-back"><a class="primary-action" href="/work/" data-reading-back>返回完整作品集 <span>→</span></a><a href="/resume/">查看经历简历</a></div>
+    <section class="related-work"><header class="section-flag"><div><h2>继续浏览</h2></div><a class="section-more" href="/work/">全部项目 →</a></header><div class="project-grid"><article class="project-card related-card project-card-text" id="card-ai-copy-workbench-01" data-project="ai-copy-workbench"><div class="project-card-body"><h3><a id="card-ai-copy-workbench-01-title" href="/work/ai-copy-workbench/" data-project-link="ai-copy-workbench">闪聚星球 AI 文案工作台 <span aria-hidden="true">↗</span></a></h3><p class="related-reason">进入具体工具，看研究、写作和审核的人机分工如何实现。</p><p class="project-status">本地应用 · 持续迭代与验证</p></div></article><article class="project-card related-card project-card-text" id="card-opc-campaign-02" data-project="opc-campaign"><div class="project-card-body"><h3><a id="card-opc-campaign-02-title" href="/work/opc-campaign/" data-project-link="opc-campaign">OPC 线下推广 <span aria-hidden="true">↗</span></a></h3><p class="related-reason">继续看工作流方法如何转成线下体验课和推广方案。</p><p class="project-status">推广与试点方案</p></div></article></div></section>
+  </article></main>
+  <footer class="site-footer site-footer-compact">
+    <div class="page-shell footer-inner">
+
+      <div class="footer-links"><a href="/work/">完整作品集</a><a href="/resume/">经历简历</a><a href="mailto:michalflowers245@gmail.com">michalflowers245@gmail.com</a></div>
+    </div>
+    <div class="footer-bottom page-shell"><span>张熙 · ZHANG XI</span><span>在长沙学习和生活</span><a href="#main-content">回到顶部 ↑</a></div>
+  </footer>
+  <dialog class="lightbox" aria-labelledby="lightbox-title" data-zoom="fit"><div class="lightbox-shell"><header><h2 id="lightbox-title">项目图片</h2><button type="button" data-lightbox-close aria-label="关闭大图">关闭 <span aria-hidden="true">×</span></button><div class="lightbox-tools" role="group" aria-label="图片查看方式"><button type="button" data-lightbox-mode="fit" data-lightbox-fit aria-pressed="true" aria-controls="lightbox-image-area">完整原图</button><button type="button" data-lightbox-mode="focus" data-lightbox-focus aria-pressed="false" aria-controls="lightbox-image-area" hidden>重点区域</button><button type="button" data-lightbox-mode="actual" data-lightbox-zoom aria-pressed="false" aria-controls="lightbox-image-area">原尺寸读字</button></div></header><div class="lightbox-image-area" id="lightbox-image-area" tabindex="0" aria-label="图片区域，原尺寸模式可滚动查看"><img data-lightbox-image alt=""><div class="lightbox-error" hidden><p>大图暂未加载。</p><button type="button" data-lightbox-retry>重新加载图片</button></div></div><div class="lightbox-caption-area"><p data-lightbox-focus-note hidden></p><p data-lightbox-caption></p></div><div class="lightbox-actions"><button type="button" data-lightbox-prev>上一张</button><span data-lightbox-count aria-live="polite"></span><button type="button" data-lightbox-next>下一张</button></div></div></dialog>
+</body>
+</html>

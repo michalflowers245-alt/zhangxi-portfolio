@@ -1,0 +1,167 @@
+<!doctype html>
+<html lang="zh-CN" data-theme="light">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#fff8e8" data-theme-color>
+  <meta name="description" content="把答卷反馈、真题检索和题单导出接入教师工作流程。物理工作台与题单工具本地实现，教育 Agent 单独展示系统设计。">
+  <meta property="og:title" content="物理工作台与真题分析工具链｜张熙作品集">
+  <meta property="og:description" content="把答卷反馈、真题检索和题单导出接入教师工作流程。物理工作台与题单工具本地实现，教育 Agent 单独展示系统设计。">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="zh_CN">
+
+  <title>物理工作台与真题分析工具链｜张熙作品集</title>
+  <script>(function initializeTheme(){
+  const root=document.documentElement;
+  let choice=null;
+  try{const saved=localStorage.getItem('zhangxi-theme-reference');if(saved==='light'||saved==='dark')choice=saved;}catch{}
+  if(choice)root.dataset.themeChoice=choice;else delete root.dataset.themeChoice;
+  root.dataset.theme=choice||(matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light');
+  document.querySelector('[data-theme-color]')?.setAttribute('content',root.dataset.theme==='dark'?'#181817':'#fff8e8');
+})();</script>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='10' fill='%23080b0e'/%3E%3Cpath d='M15 18h34v8H37v22h-9V26H15z' fill='%23d8b678'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="/assets/site.css?v=67253512da1cc3a2">
+  <link rel="stylesheet" href="/assets/folio.css?v=67253512da1cc3a2">
+  <link rel="stylesheet" href="/assets/media.css?v=67253512da1cc3a2">
+  <link rel="stylesheet" href="/assets/refine.css?v=67253512da1cc3a2">
+  <script type="module" src="/assets/site.js?v=67253512da1cc3a2"></script>
+  <meta property="og:site_name" content="张熙作品集">
+  <meta property="og:image" content="/assets/portfolio/portrait-original.jpg">
+  <meta property="og:image:alt" content="张熙个人照片">
+  <meta property="og:image:width" content="960">
+  <meta property="og:image:height" content="1440">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="物理工作台与真题分析工具链｜张熙作品集">
+  <meta name="twitter:description" content="把答卷反馈、真题检索和题单导出接入教师工作流程。物理工作台与题单工具本地实现，教育 Agent 单独展示系统设计。">
+  <meta name="twitter:image" content="/assets/portfolio/portrait-original.jpg">
+  <meta name="twitter:image:alt" content="张熙个人照片">
+</head>
+<body class="page-work">
+  <a class="skip-link" href="#main-content">跳至正文</a>
+  <header class="site-header">
+    <div class="header-inner page-shell">
+      <a class="brand" href="/" aria-label="返回首页"><strong>张熙</strong><span>ZHANG XI</span></a>
+      <nav id="primary-navigation" aria-label="主导航">
+        <a href="/">首页</a><a href="/work/" aria-current="page">作品集</a><a href="/resume/">经历简历</a><a href="/about/">关于我</a><a href="/#contact">联系我</a>
+      </nav>
+      <div class="header-tools">
+        <button class="theme-toggle icon-button" type="button" aria-label="切换为深色主题" title="切换明暗主题"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="7.5"/><path d="M12 4.5v15a7.5 7.5 0 0 0 0-15Z" fill="currentColor" stroke="none"/></svg></button>
+        <button class="menu-toggle icon-button" type="button" aria-label="打开导航" aria-controls="primary-navigation" aria-expanded="false"><span></span><span></span></button>
+      </div>
+    </div>
+  </header>
+  <script>(function initializeShell(){
+  const root=document.documentElement;
+  const menu=document.querySelector('.menu-toggle'), nav=document.querySelector('#primary-navigation'),theme=document.querySelector('.theme-toggle');
+  const compact=matchMedia('(max-width:780px)'),systemTheme=matchMedia('(prefers-color-scheme: dark)');
+  let choice=['light','dark'].includes(root.dataset.themeChoice)?root.dataset.themeChoice:null;
+  let lastStoredChoice=choice,memoryOnlyChoice=false;
+  const syncTheme=()=>{const dark=root.dataset.theme==='dark';theme.setAttribute('aria-label',dark?'切换为浅色主题':'切换为深色主题');document.querySelector('[data-theme-color]')?.setAttribute('content',dark?'#181817':'#fff8e8');};
+  const applyTheme=()=>{if(choice)root.dataset.themeChoice=choice;else delete root.dataset.themeChoice;root.dataset.theme=choice||(systemTheme.matches?'dark':'light');syncTheme();};
+  const refreshStoredTheme=()=>{
+    let saved;
+    try{const value=localStorage.getItem('zhangxi-theme-reference');saved=value==='light'||value==='dark'?value:null;}catch{applyTheme();return;}
+    // A returned BFCache page adopts newer persisted choices. A failed local
+    // write keeps its in-memory choice unless a different valid choice appears.
+    if(!memoryOnlyChoice||(saved&&saved!==lastStoredChoice)){choice=saved;memoryOnlyChoice=false;}
+    lastStoredChoice=saved;applyTheme();
+  };
+  const menuOpen=()=>menu.getAttribute('aria-expanded')==='true';
+  const firstNavLink=()=>nav.querySelector('a[href]');
+  let lastFocused=null,wasCompact=compact.matches;
+  const setMenu=(open,restore=false)=>{
+    // Only reclaim focus when closing the region which still owns it.
+    const returnFocus=!open&&compact.matches&&(restore||nav.contains(document.activeElement));
+    if(returnFocus)menu.focus({preventScroll:true});
+    menu.setAttribute('aria-expanded',String(open));menu.setAttribute('aria-label',open?'关闭导航':'打开导航');
+    nav.toggleAttribute('data-open',open);if(open)nav.scrollTop=0;
+  };
+  theme.addEventListener('click',()=>{choice=root.dataset.theme==='dark'?'light':'dark';try{localStorage.setItem('zhangxi-theme-reference',choice);lastStoredChoice=choice;memoryOnlyChoice=false;}catch{memoryOnlyChoice=true;}applyTheme();});
+  systemTheme.addEventListener('change',()=>{if(!choice)applyTheme();});
+  window.addEventListener('pageshow',refreshStoredTheme);
+  window.addEventListener('storage',event=>{if(event.key===null||event.key==='zhangxi-theme-reference')refreshStoredTheme();});
+  menu.addEventListener('click',event=>{
+    const open=!menuOpen();setMenu(open);
+    // Keyboard / assistive activation enters the disclosure; pointer opening does not steal focus.
+    if(open&&event.detail===0)firstNavLink()?.focus({preventScroll:true});
+  });
+  menu.addEventListener('keydown',event=>{
+    // Also support switching from a pointer-opened disclosure to keyboard navigation.
+    if(event.key==='Tab'&&!event.shiftKey&&menuOpen()){
+      event.preventDefault();firstNavLink()?.focus({preventScroll:true});
+    }
+  });
+  nav.addEventListener('click',event=>{
+    if(event.target.closest('a')&&event.button===0&&!event.metaKey&&!event.ctrlKey&&!event.shiftKey&&!event.altKey)setMenu(false);
+  });
+  document.addEventListener('focusin',event=>{
+    lastFocused=event.target;
+    // This is a non-modal disclosure: forward and reverse Tab may leave it normally.
+    if(menuOpen()&&!nav.contains(event.target)&&event.target!==menu)setMenu(false);
+  });
+  document.addEventListener('focusout',event=>{
+    // Preserve the owner when CSS hides it, regardless of media-query/blur order.
+    // A move from a visible control to blank content is not a resize focus request.
+    if(!event.relatedTarget&&compact.matches===wasCompact&&event.target.getClientRects().length)lastFocused=null;
+  });
+  document.addEventListener('keydown',event=>{
+    if(event.key==='Escape'&&menuOpen()){event.preventDefault();setMenu(false,true);}
+  });
+  document.addEventListener('click',event=>{if(!event.target.closest('.site-header')&&menuOpen())setMenu(false);});
+  compact.addEventListener('change',()=>{
+    const active=document.activeElement===document.body?lastFocused:document.activeElement;
+    const toMenu=compact.matches&&nav.contains(active),toNav=!compact.matches&&active===menu;
+    wasCompact=compact.matches;setMenu(false);
+    if(toMenu)menu.focus({preventScroll:true});else if(toNav)firstNavLink()?.focus({preventScroll:true});
+  });applyTheme();root.classList.add('has-js');
+})();</script>
+  <main id="main-content"><article class="project-detail page-shell" data-case-reader>
+    <nav class="detail-breadcrumb" aria-label="项目位置"><a href="/work/">作品集</a><span aria-hidden="true">/</span><a href="/work/#product">技术产品</a></nav>
+
+    <header class="detail-hero">
+      <div class="detail-heading"><div class="detail-meta"><span class="project-type">教育数字化 · 本地工作台与题单引擎</span><time>2026 · 本地持续迭代</time></div><h1><span class="title-part">物理工作台与</span><span class="title-part">真题分析工具链</span></h1><p class="detail-role">产品与数据流程设计</p><p class="detail-intro">教师要在答卷、名单、错题、讲义和家长反馈之间反复切换；题目资料也存在来源、裁图和结构化质量问题。</p><div class="case-shortcuts"><a class="primary-action" data-evidence-link href="#case-education-tools-5">查看完整题单样张 <span aria-hidden="true">↓</span></a><a class="implementation-shortcut" href="#implementation-education-tools-student-output-contract" data-implementation-link>查看关键实现 <span aria-hidden="true">↓</span></a></div></div>
+    </header>
+    <section class="case-brief" aria-label="项目概览"><dl class="brief-fields"><div><dt>服务对象</dt><dd>整理物理知识、选择原题与制作题单的教师。</dd></div><div><dt>我的工作</dt><dd>负责教学需求拆解、数据流程与工具协作。</dd></div><div class="brief-delivery"><dt>形成的交付</dt><dd>物理工作台、真题与题单本地工具；另有 AI 教育 Agent 系统设计。</dd></div></dl><dl class="detail-facts"><div class="detail-fact"><dt>教学反馈</dt><dd>课前测</dd></div><div class="detail-fact"><dt>资料整理</dt><dd>原题溯源</dd></div><div class="detail-fact"><dt>训练交付</dt><dd>学生题单</dd></div><div class="detail-fact"><dt>质量边界</dt><dd>教师复核</dd></div></dl><p class="case-stage"><strong>项目阶段：</strong>前两项为本地工具与软件验收，Agent 为设计探索；题单样张不代表真实教学效果。</p></section>
+    <div class="case-reading"><nav class="case-contents" aria-label="本项目内容目录" data-case-toc><p class="eyebrow">阅读目录</p><button type="button" data-case-toc-toggle aria-expanded="true" aria-controls="case-toc-links" hidden><span>目录 · <span data-case-toc-current>同一教学问题，三种交付阶段</span></span><span data-case-toc-action aria-hidden="true">展开</span></button><ol id="case-toc-links"><li><a href="#case-education-tools-1"><span aria-hidden="true">01</span>同一教学问题，三种交付阶段</a></li><li><a href="#case-education-tools-2"><span aria-hidden="true">02</span>我的工作与教学判断边界</a></li><li><a href="#case-education-tools-3"><span aria-hidden="true">03</span>物理工作台：一次课怎样闭环</a></li><li><a href="#case-education-tools-4"><span aria-hidden="true">04</span>真题与题单：从找题到学生版</a></li><li><a href="#case-education-tools-5"><span aria-hidden="true">05</span>从误切修复到完整题单样张</a></li><li><a href="#case-education-tools-6"><span aria-hidden="true">06</span>AI 教育 Agent：平台层的设计</a></li><li><a href="#case-education-tools-7"><span aria-hidden="true">07</span>已有交付与历史验证</a></li><li><a href="#case-education-tools-8"><span aria-hidden="true">08</span>当前阶段与下一步</a></li></ol><a class="reader-back" href="/work/" data-reading-back>返回作品集 <span aria-hidden="true">↗</span></a></nav>
+    <div class="case-chapters"><section class="case-chapter" id="case-education-tools-1" tabindex="-1" aria-labelledby="case-education-tools-1-title"><h2 id="case-education-tools-1-title">同一教学问题，三种交付阶段</h2><p>这组 2026 年的实践针对教师备课、课前测、反馈和复习中资料分散、重复录入的问题，梳理从资料到题目、从作答到可核对反馈的工具流程。</p><p>物理工作台已有本机运行与验收记录；真题和学生题单引擎已有整理、核验与导出流程；AI 教育平台 Agent 是平台层的系统技术设计，三者处于不同交付阶段。</p></section><section class="case-chapter" id="case-education-tools-2" tabindex="-1" aria-labelledby="case-education-tools-2-title"><h2 id="case-education-tools-2-title">我的工作与教学判断边界</h2><p>我负责教学需求拆解、产品与数据流程设计，通过 AI 工具协作推进实现。核心是把重复整理与教学判断分开：AI 识别作为候选，成绩、标准答案、模糊题目与家长反馈由教师核对确认，原件和历史保留以便回查。</p></section><section class="case-chapter" id="case-education-tools-3" tabindex="-1" aria-labelledby="case-education-tools-3-title"><h2 id="case-education-tools-3-title">物理工作台：一次课怎样闭环</h2><ol class="case-steps"><li>上传标准答案与学生试卷，检查页码和学生对应关系，再进行录分与逐题校对。</li><li>AI 识别先进入候选区；教师采用、修改和确认后形成正式记录，不直接覆盖已有成绩。</li><li>根据成绩与错因形成反馈草稿，保留教师手写内容；复制反馈与实际发送分别标记，发送仍由教师完成。</li><li>进入订正与复习，记录后续进步，同时保留原始考试成绩和历史版本。</li></ol><p>本机工具处理班级与课次隔离、稳定学生标识、双窗口写入冲突，以及数据库和原件备份恢复。9 月 13 日优化将两个 PDF 上传入口和五步进度放到首页，让教师更容易找到下一步。</p></section><section class="case-chapter" id="case-education-tools-4" tabindex="-1" aria-labelledby="case-education-tools-4-title"><h2 id="case-education-tools-4-title">真题与题单：从找题到学生版</h2><p>按年级、章节和知识点找题，查看原题图与来源后加入草稿；教师审核答案、分值、题目和题图完整性，确认后下载或打印学生版。</p><p>学生版使用原题裁图，不混入重复 OCR 文字、答案或内部字段。导出前后核对审核状态与版本，题目修改或撤销确认后不能继续交付旧卷。</p></section><section class="case-chapter" id="case-education-tools-5" tabindex="-1" aria-labelledby="case-education-tools-5-title"><h2 id="case-education-tools-5-title">从误切修复到完整题单样张</h2><div class="detail-media"><section class="gallery gallery-detail" data-gallery="education-tools" aria-label="物理工作台与真题分析工具链图片材料">
+    <div class="gallery-track" id="gallery-education-tools"><figure class="gallery-slide" data-image-id="education-sheet-1" data-kind="document" data-layout="portrait" data-focus="{&quot;x&quot;:0.07,&quot;y&quot;:0.045,&quot;width&quot;:0.86,&quot;height&quot;:0.275,&quot;label&quot;:&quot;验收标识、空白学生栏与第1题（第1页局部）&quot;}" style="--media-ratio:827/1170;--native-width:827px">
+      <div class="gallery-image-wrap"><a class="gallery-open" href="/assets/portfolio/education-sheet-1-original.png" data-lightbox aria-label="放大查看：软件验收题单第1页，含非教师发布标识、第1题及第2题和续题图"><img src="/assets/portfolio/education-sheet-1-827.webp" srcset="/assets/portfolio/education-sheet-1-480.webp 480w, /assets/portfolio/education-sheet-1-827.webp 827w" sizes="(max-width: 760px) calc(100vw - 48px), 680px" width="827" height="1170" alt="软件验收题单第1页，含非教师发布标识、第1题及第2题和续题图" loading="lazy" decoding="async"></a><div class="media-error" hidden><p>图片暂未加载，文字内容仍可阅读。</p><button type="button" data-retry>重新加载图片</button></div></div>
+      <figcaption>导出题单第1页 · 第1题与第2题按选择顺序重组，保留原题号和续题图；“软件验收样张（非教师发布）”与空白学生栏均保留。原页码与留白为导出原貌，不代表教学效果。</figcaption></figure><figure class="gallery-slide" data-image-id="education-sheet-2" data-kind="document" data-layout="portrait" data-focus="{&quot;x&quot;:0.07,&quot;y&quot;:0.048,&quot;width&quot;:0.84,&quot;height&quot;:0.457,&quot;label&quot;:&quot;第3题的题干、原题号与续题示意图（第2页局部）&quot;}" style="--media-ratio:827/1170;--native-width:827px">
+      <div class="gallery-image-wrap"><a class="gallery-open" href="/assets/portfolio/education-sheet-2-original.png" data-lightbox aria-label="放大查看：软件验收题单第2页，完整展示第3题及续题图，页码为第2页"><img src="/assets/portfolio/education-sheet-2-827.webp" srcset="/assets/portfolio/education-sheet-2-480.webp 480w, /assets/portfolio/education-sheet-2-827.webp 827w" sizes="(max-width: 760px) calc(100vw - 48px), 680px" width="827" height="1170" alt="软件验收题单第2页，完整展示第3题及续题图，页码为第2页" loading="lazy" decoding="async"></a><div class="media-error" hidden><p>图片暂未加载，文字内容仍可阅读。</p><button type="button" data-retry>重新加载图片</button></div></div>
+      <figcaption>导出题单第2页 · 展示第3题的题干、续题与示意图，与上一页组成两页三题样张。保留原题号、原页码和本次导出页码，便于回查来源。</figcaption></figure></div>
+    <div class="gallery-controls" hidden><button type="button" data-previous aria-controls="gallery-education-tools" aria-label="上一张图片">上一张</button><span data-gallery-count aria-live="polite" aria-atomic="true">1 / 2</span><button type="button" data-next aria-controls="gallery-education-tools" aria-label="下一张图片">下一张</button><button type="button" data-enlarge aria-haspopup="dialog">放大查看</button></div>
+    <div class="gallery-focus-entry" hidden><span>图片重点：<span data-focus-label></span></span></div>
+    <div class="gallery-thumbs" aria-label="选择图片，可横向浏览" hidden><button type="button" data-image-select="0" aria-label="第 1 张：导出题单第1页 · 第1题与第2题按选择顺序重组，保留原题号和续题图；“软件验收样张（非教师发布）”与空白学生栏均保留。原页码与留白为导出原貌，不代表教学效果。" aria-pressed="true"><img src="/assets/portfolio/education-sheet-1-480.webp" alt="" width="72" height="44" loading="lazy"><span class="thumb-number">01</span><span class="thumb-label">题单第1页</span></button><button type="button" data-image-select="1" aria-label="第 2 张：导出题单第2页 · 展示第3题的题干、续题与示意图，与上一页组成两页三题样张。保留原题号、原页码和本次导出页码，便于回查来源。" aria-pressed="false"><img src="/assets/portfolio/education-sheet-2-480.webp" alt="" width="72" height="44" loading="lazy"><span class="thumb-number">02</span><span class="thumb-label">题单第2页</span></button></div>
+  </section></div><aside class="case-path" data-case-path="education-tools" data-path-kind="product" aria-label="从原题到可核对的学生版"><h3>从原题到可核对的学生版</h3><ol><li><strong>找到原题</strong><span>按知识点选择题目，保留原题裁图、原题号与页码，随时核对来源。</span></li><li><strong>教师确认</strong><span>审核题目、题图、答案和分值；修改或撤销确认后，旧卷不能继续交付。</span></li><li><strong>导出题单</strong><span>学生版只呈现题目；图册中的两页三题样张展示重组与完整输出效果。</span></li></ol><p class="path-note">我负责需求与数据流程；样张为软件验收输出，教育 Agent 另属设计阶段。</p></aside><p>9 月 13 日题单验收发现部分小数被识别成题号，导致误切。修复时保留历史、停用误切内容并恢复原题，没有覆盖全部资料或自动赋予教师确认。</p><p>整理后有 900 道有效题、1,136 个原题区域，来源身份与哈希逐一检查零失败。它验证来源、裁图与记录的一致性，答案和教学正确性仍需教师逐题核验。</p><p class="case-evidence"><span>材料说明</span>图册呈现学生版题单输出，验收依据《原题可见与学生题单验收-20260913》。900 是有效题数而非学生人数；测试确认在独立副本进行，不写入正式教学库。</p><section class="implementation" id="implementation-education-tools-student-output-contract" data-code-sample="student-output-contract" aria-labelledby="implementation-education-tools-student-output-contract-title" tabindex="-1"><div class="implementation-heading"><span>关键实现</span><span>JavaScript</span></div><h3 id="implementation-education-tools-student-output-contract-title"><span class="title-part">只把学生需要的字段</span><span class="title-part">交给题单</span></h3><p>教师核对题目后，学生版需要保留题面与必要题图，但不能把答案、解析和内部备注一起导出。</p><p class="implementation-result"><strong>实现作用：</strong>把教师资料与学生输出分开。上方两页题单样张展示最终输出，这段实现说明输出数据如何被限制。</p>
+      <details class="code-disclosure" id="implementation-education-tools-student-output-contract-details" data-reading-disclosure><summary>查看实现与真实代码 <span>15 行</span></summary><p class="code-explanation">这段函数先调用审核检查，再逐项构造输出字段，不直接复制整条教师记录；符合原题条件时标记原题模式，交给后续排版处理。</p><div class="code-toolbar"><span>student-question-set.js · 学生输出函数</span><div class="code-actions"><button type="button" data-wrap-code aria-pressed="false" hidden>换行阅读</button><button type="button" data-copy-code aria-label="复制只把学生需要的字段交给题单代码" hidden>复制代码</button></div></div><pre tabindex="0" aria-label="只把学生需要的字段交给题单代码，可横向滚动"><code><span class="code-context-indent">  </span>/** Return an explicit allow-list DTO. Do not add convenience spreads here. */
+<span class="code-context-indent">  </span>function studentQuestionDTO(question, { imageAssets = safeImageAssets(question) } = {}) {
+<span class="code-context-indent">  </span>  const check = readiness(question, { imageAssets });
+<span class="code-context-indent">  </span>  if (!check.ready) throw new Error(check.issues.join(&quot;；&quot;));
+<span class="code-context-indent">  </span>  const dto = {
+<span class="code-context-indent">  </span>    questionNo: str(question.questionNo),
+<span class="code-context-indent">  </span>    score: Number(question.score),
+<span class="code-context-indent">  </span>    stem: str(question.stem),
+<span class="code-context-indent">  </span>    options: normalizeOptions(question.options),
+<span class="code-context-indent">  </span>    tables: normalizeTables(question),
+<span class="code-context-indent">  </span>    imageAssets: imageAssets.map((asset, index) =&gt; ({ assetId: str(asset.assetId || asset.id), alt: str(asset.alt) || `题目必要图示 ${index + 1}` })),
+<span class="code-context-indent">  </span>  };
+<span class="code-context-indent">  </span>  if (contentMode(question, { imageAssets }) === &quot;original&quot;) dto.contentMode = &quot;original&quot;;
+<span class="code-context-indent">  </span>  return dto;
+<span class="code-context-indent">  </span>}</code></pre><p class="code-feedback" role="status" aria-live="polite"></p><p class="implementation-boundary">摘录为完整函数；审核规则、图片服务与 PDF 排版位于其他模块。这里展示字段约束，不代表所有题目已经审核或教学效果已经验证。</p></details>
+      <p class="implementation-boundary">我负责教学需求、产品与数据流程，并通过 AI 工具协作推进实现；摘录展示项目实现，不将全部代码归为个人独立编写。</p></section></section><section class="case-chapter" id="case-education-tools-6" tabindex="-1" aria-labelledby="case-education-tools-6-title"><h2 id="case-education-tools-6-title">AI 教育 Agent：平台层的设计</h2><p>Agent 方案连接课程资料、课堂问答、出题、辅助批改和学情：先检查课程权限，再检索并生成带来源的结果，高风险输出由教师审核。</p><p>27 页技术设计覆盖课程知识库、混合检索、结构化输出、可回放记录、接口及两期交付范围。响应时间、并发量和准确率均为设计目标，不是本机工具的实测结果。</p></section><section class="case-chapter" id="case-education-tools-7" tabindex="-1" aria-labelledby="case-education-tools-7-title"><h2 id="case-education-tools-7-title">已有交付与历史验证</h2><ul class="case-deliverables"><li>物理工作台：2026 年 9 月 12 日闭环记录有 22 项测试通过；9 月 13 日实用优化记录另有 44 项通过，并检查上传、分卷、录分、反馈与窄屏流程。</li><li>题单引擎：9 月 13 日记录 101 项回归检查通过，包含原题查看、草稿、审核门槛与学生版交付流程。</li><li>平台 Agent：交付系统技术设计与阶段验收要求，按设计成果单独呈现。</li></ul><p class="case-evidence"><span>材料说明</span>这些是不同日期、不同范围的历史验证，测试数量不累计。实用优化使用模拟模型检查流程；少量清晰印刷样例的真实模型结果，也不能代表真实手写判题准确率。</p></section><section class="case-chapter" id="case-education-tools-8" tabindex="-1" aria-labelledby="case-education-tools-8-title"><h2 id="case-education-tools-8-title">当前阶段与下一步</h2><p>9 月 13 日题单验收时，正式学生题单与学生作答均为零，全部有效题仍待教师逐题审核；其中 66 道缺结构化答案、45 道缺明确分值。下一步先补齐审核，再以真实教学反馈验证是否减少整理负担。学习效果与平台性能分别验证，不由软件回归结果推定。</p></section></div>
+    </div>
+
+    <section class="case-conversation" aria-labelledby="case-conversation-title"><div><p class="eyebrow">从这个案例继续聊</p><h2 id="case-conversation-title">你也在处理类似的问题？</h2><p>来信说明你的场景、目前卡住的环节，以及希望我参与哪一部分。</p></div><div class="contact-card"><a class="primary-action" href="mailto:michalflowers245@gmail.com?subject=%E5%85%B3%E4%BA%8E%E3%80%8C%E7%89%A9%E7%90%86%E5%B7%A5%E4%BD%9C%E5%8F%B0%E4%B8%8E%E7%9C%9F%E9%A2%98%E5%88%86%E6%9E%90%E5%B7%A5%E5%85%B7%E9%93%BE%E3%80%8D%E7%9A%84%E4%BA%A4%E6%B5%81" data-case-contact>围绕这个项目交流 <span aria-hidden="true">↗</span></a><div class="case-contact-fallback"><a class="contact-email" href="mailto:michalflowers245@gmail.com">michalflowers245@gmail.com</a><button type="button" data-copy-email="michalflowers245@gmail.com" hidden>复制邮箱</button></div><p class="contact-feedback" data-contact-feedback role="status" aria-live="polite"></p></div></section>
+    <div class="detail-back"><a class="primary-action" href="/work/" data-reading-back>返回完整作品集 <span>→</span></a><a href="/resume/">查看经历简历</a></div>
+    <section class="related-work"><header class="section-flag"><div><h2>继续浏览</h2></div><a class="section-more" href="/work/">全部项目 →</a></header><div class="project-grid"><article class="project-card related-card project-card-text" id="card-bluecut-education-01" data-project="bluecut-education"><div class="project-card-body"><h3><a id="card-bluecut-education-01-title" href="/work/bluecut-education/" data-project-link="bluecut-education">蓝切线教育工作室 <span aria-hidden="true">↗</span></a></h3><p class="related-reason">回到教育服务经验，了解师生匹配、反馈与质量管理。</p><p class="project-status">阶段性经营项目</p></div></article><article class="project-card related-card project-card-text" id="card-shujian-financial-brief-02" data-project="shujian-financial-brief"><div class="project-card-body"><h3><a id="card-shujian-financial-brief-02-title" href="/work/shujian-financial-brief/" data-project-link="shujian-financial-brief">数鉴｜AI 财报简报引擎 <span aria-hidden="true">↗</span></a></h3><p class="related-reason">比较财报与试题两类专业资料如何关联证据并保留人工复核。</p><p class="project-status">产品方案与 Demo · 阶段性技术验证</p></div></article></div></section>
+  </article></main>
+  <footer class="site-footer site-footer-compact">
+    <div class="page-shell footer-inner">
+
+      <div class="footer-links"><a href="/work/">完整作品集</a><a href="/resume/">经历简历</a><a href="mailto:michalflowers245@gmail.com">michalflowers245@gmail.com</a></div>
+    </div>
+    <div class="footer-bottom page-shell"><span>张熙 · ZHANG XI</span><span>在长沙学习和生活</span><a href="#main-content">回到顶部 ↑</a></div>
+  </footer>
+  <dialog class="lightbox" aria-labelledby="lightbox-title" data-zoom="fit"><div class="lightbox-shell"><header><h2 id="lightbox-title">项目图片</h2><button type="button" data-lightbox-close aria-label="关闭大图">关闭 <span aria-hidden="true">×</span></button><div class="lightbox-tools" role="group" aria-label="图片查看方式"><button type="button" data-lightbox-mode="fit" data-lightbox-fit aria-pressed="true" aria-controls="lightbox-image-area">完整原图</button><button type="button" data-lightbox-mode="focus" data-lightbox-focus aria-pressed="false" aria-controls="lightbox-image-area" hidden>重点区域</button><button type="button" data-lightbox-mode="actual" data-lightbox-zoom aria-pressed="false" aria-controls="lightbox-image-area">原尺寸读字</button></div></header><div class="lightbox-image-area" id="lightbox-image-area" tabindex="0" aria-label="图片区域，原尺寸模式可滚动查看"><img data-lightbox-image alt=""><div class="lightbox-error" hidden><p>大图暂未加载。</p><button type="button" data-lightbox-retry>重新加载图片</button></div></div><div class="lightbox-caption-area"><p data-lightbox-focus-note hidden></p><p data-lightbox-caption></p></div><div class="lightbox-actions"><button type="button" data-lightbox-prev>上一张</button><span data-lightbox-count aria-live="polite"></span><button type="button" data-lightbox-next>下一张</button></div></div></dialog>
+</body>
+</html>

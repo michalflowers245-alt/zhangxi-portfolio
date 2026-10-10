@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang="zh-CN" data-theme="light">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#fff8e8" data-theme-color>
+  <meta name="description" content="将资料核验、主持串场、控时与点评衔接成活动沟通流程，以主持稿和周复盘提纲展示具体组织方法。">
+  <meta property="og:title" content="Variational 活动与传播实践｜张熙作品集">
+  <meta property="og:description" content="将资料核验、主持串场、控时与点评衔接成活动沟通流程，以主持稿和周复盘提纲展示具体组织方法。">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="zh_CN">
+
+  <title>Variational 活动与传播实践｜张熙作品集</title>
+  <script>(function initializeTheme(){
+  const root=document.documentElement;
+  let choice=null;
+  try{const saved=localStorage.getItem('zhangxi-theme-reference');if(saved==='light'||saved==='dark')choice=saved;}catch{}
+  if(choice)root.dataset.themeChoice=choice;else delete root.dataset.themeChoice;
+  root.dataset.theme=choice||(matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light');
+  document.querySelector('[data-theme-color]')?.setAttribute('content',root.dataset.theme==='dark'?'#181817':'#fff8e8');
+})();</script>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='10' fill='%23080b0e'/%3E%3Cpath d='M15 18h34v8H37v22h-9V26H15z' fill='%23d8b678'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="/assets/site.css?v=67253512da1cc3a2">
+  <link rel="stylesheet" href="/assets/folio.css?v=67253512da1cc3a2">
+  <link rel="stylesheet" href="/assets/media.css?v=67253512da1cc3a2">
+  <link rel="stylesheet" href="/assets/refine.css?v=67253512da1cc3a2">
+  <script type="module" src="/assets/site.js?v=67253512da1cc3a2"></script>
+  <meta property="og:site_name" content="张熙作品集">
+  <meta property="og:image" content="/assets/portfolio/portrait-original.jpg">
+  <meta property="og:image:alt" content="张熙个人照片">
+  <meta property="og:image:width" content="960">
+  <meta property="og:image:height" content="1440">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Variational 活动与传播实践｜张熙作品集">
+  <meta name="twitter:description" content="将资料核验、主持串场、控时与点评衔接成活动沟通流程，以主持稿和周复盘提纲展示具体组织方法。">
+  <meta name="twitter:image" content="/assets/portfolio/portrait-original.jpg">
+  <meta name="twitter:image:alt" content="张熙个人照片">
+</head>
+<body class="page-work">
+  <a class="skip-link" href="#main-content">跳至正文</a>
+  <header class="site-header">
+    <div class="header-inner page-shell">
+      <a class="brand" href="/" aria-label="返回首页"><strong>张熙</strong><span>ZHANG XI</span></a>
+      <nav id="primary-navigation" aria-label="主导航">
+        <a href="/">首页</a><a href="/work/" aria-current="page">作品集</a><a href="/resume/">经历简历</a><a href="/about/">关于我</a><a href="/#contact">联系我</a>
+      </nav>
+      <div class="header-tools">
+        <button class="theme-toggle icon-button" type="button" aria-label="切换为深色主题" title="切换明暗主题"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="7.5"/><path d="M12 4.5v15a7.5 7.5 0 0 0 0-15Z" fill="currentColor" stroke="none"/></svg></button>
+        <button class="menu-toggle icon-button" type="button" aria-label="打开导航" aria-controls="primary-navigation" aria-expanded="false"><span></span><span></span></button>
+      </div>
+    </div>
+  </header>
+  <script>(function initializeShell(){
+  const root=document.documentElement;
+  const menu=document.querySelector('.menu-toggle'), nav=document.querySelector('#primary-navigation'),theme=document.querySelector('.theme-toggle');
+  const compact=matchMedia('(max-width:780px)'),systemTheme=matchMedia('(prefers-color-scheme: dark)');
+  let choice=['light','dark'].includes(root.dataset.themeChoice)?root.dataset.themeChoice:null;
+  let lastStoredChoice=choice,memoryOnlyChoice=false;
+  const syncTheme=()=>{const dark=root.dataset.theme==='dark';theme.setAttribute('aria-label',dark?'切换为浅色主题':'切换为深色主题');document.querySelector('[data-theme-color]')?.setAttribute('content',dark?'#181817':'#fff8e8');};
+  const applyTheme=()=>{if(choice)root.dataset.themeChoice=choice;else delete root.dataset.themeChoice;root.dataset.theme=choice||(systemTheme.matches?'dark':'light');syncTheme();};
+  const refreshStoredTheme=()=>{
+    let saved;
+    try{const value=localStorage.getItem('zhangxi-theme-reference');saved=value==='light'||value==='dark'?value:null;}catch{applyTheme();return;}
+    // A returned BFCache page adopts newer persisted choices. A failed local
+    // write keeps its in-memory choice unless a different valid choice appears.
+    if(!memoryOnlyChoice||(saved&&saved!==lastStoredChoice)){choice=saved;memoryOnlyChoice=false;}
+    lastStoredChoice=saved;applyTheme();
+  };
+  const menuOpen=()=>menu.getAttribute('aria-expanded')==='true';
+  const firstNavLink=()=>nav.querySelector('a[href]');
+  let lastFocused=null,wasCompact=compact.matches;
+  const setMenu=(open,restore=false)=>{
+    // Only reclaim focus when closing the region which still owns it.
+    const returnFocus=!open&&compact.matches&&(restore||nav.contains(document.activeElement));
+    if(returnFocus)menu.focus({preventScroll:true});
+    menu.setAttribute('aria-expanded',String(open));menu.setAttribute('aria-label',open?'关闭导航':'打开导航');
+    nav.toggleAttribute('data-open',open);if(open)nav.scrollTop=0;
+  };
+  theme.addEventListener('click',()=>{choice=root.dataset.theme==='dark'?'light':'dark';try{localStorage.setItem('zhangxi-theme-reference',choice);lastStoredChoice=choice;memoryOnlyChoice=false;}catch{memoryOnlyChoice=true;}applyTheme();});
+  systemTheme.addEventListener('change',()=>{if(!choice)applyTheme();});
+  window.addEventListener('pageshow',refreshStoredTheme);
+  window.addEventListener('storage',event=>{if(event.key===null||event.key==='zhangxi-theme-reference')refreshStoredTheme();});
+  menu.addEventListener('click',event=>{
+    const open=!menuOpen();setMenu(open);
+    // Keyboard / assistive activation enters the disclosure; pointer opening does not steal focus.
+    if(open&&event.detail===0)firstNavLink()?.focus({preventScroll:true});
+  });
+  menu.addEventListener('keydown',event=>{
+    // Also support switching from a pointer-opened disclosure to keyboard navigation.
+    if(event.key==='Tab'&&!event.shiftKey&&menuOpen()){
+      event.preventDefault();firstNavLink()?.focus({preventScroll:true});
+    }
+  });
+  nav.addEventListener('click',event=>{
+    if(event.target.closest('a')&&event.button===0&&!event.metaKey&&!event.ctrlKey&&!event.shiftKey&&!event.altKey)setMenu(false);
+  });
+  document.addEventListener('focusin',event=>{
+    lastFocused=event.target;
+    // This is a non-modal disclosure: forward and reverse Tab may leave it normally.
+    if(menuOpen()&&!nav.contains(event.target)&&event.target!==menu)setMenu(false);
+  });
+  document.addEventListener('focusout',event=>{
+    // Preserve the owner when CSS hides it, regardless of media-query/blur order.
+    // A move from a visible control to blank content is not a resize focus request.
+    if(!event.relatedTarget&&compact.matches===wasCompact&&event.target.getClientRects().length)lastFocused=null;
+  });
+  document.addEventListener('keydown',event=>{
+    if(event.key==='Escape'&&menuOpen()){event.preventDefault();setMenu(false,true);}
+  });
+  document.addEventListener('click',event=>{if(!event.target.closest('.site-header')&&menuOpen())setMenu(false);});
+  compact.addEventListener('change',()=>{
+    const active=document.activeElement===document.body?lastFocused:document.activeElement;
+    const toMenu=compact.matches&&nav.contains(active),toNav=!compact.matches&&active===menu;
+    wasCompact=compact.matches;setMenu(false);
+    if(toMenu)menu.focus({preventScroll:true});else if(toNav)firstNavLink()?.focus({preventScroll:true});
+  });applyTheme();root.classList.add('has-js');
+})();</script>
+  <main id="main-content"><article class="project-detail page-shell" data-case-reader>
+    <nav class="detail-breadcrumb" aria-label="项目位置"><a href="/work/">作品集</a><span aria-hidden="true">/</span><a href="/work/#events">活动与传播</a></nav>
+
+    <header class="detail-hero">
+      <div class="detail-heading"><div class="detail-meta"><span class="project-type">活动主持 · 资料研究 · 周复盘</span><time>2026</time></div><h1><span class="title-part">Variational </span><span class="title-part">活动与传播实践</span></h1><p class="detail-role">资料研究、活动主持与周复盘</p><p class="detail-intro">项目规则多、信息渠道分散；个人研究需要核对来源，周汇报需要清楚的表达顺序、时间安排和反馈衔接。</p><div class="case-shortcuts"><a class="primary-action" data-evidence-link href="#case-variational-activities-5">查看主持串场案例 <span aria-hidden="true">↓</span></a></div></div>
+    </header>
+    <section class="case-brief" aria-label="项目概览"><dl class="brief-fields"><div><dt>服务对象</dt><dd>共同核验资料、交流研究的社群与活动参与者。</dd></div><div><dt>我的工作</dt><dd>整理资料、主持串场并组织周汇报与复盘。</dd></div><div class="brief-delivery"><dt>形成的交付</dt><dd>资料说明、主持串场稿、控时与点评安排、周汇报和复盘提纲。</dd></div></dl><dl class="detail-facts"><div class="detail-fact"><dt>活动表达</dt><dd>主持稿</dd></div><div class="detail-fact"><dt>沟通结构</dt><dd>周汇报</dd></div><div class="detail-fact"><dt>改进方法</dt><dd>复盘提纲</dd></div></dl><p class="case-stage"><strong>项目阶段：</strong>资料研究与活动沟通实践；不使用尚未核实的传播或交易数字作为成绩。</p></section>
+    <div class="case-reading"><nav class="case-contents" aria-label="本项目内容目录" data-case-toc><p class="eyebrow">阅读目录</p><button type="button" data-case-toc-toggle aria-expanded="true" aria-controls="case-toc-links" hidden><span>目录 · <span data-case-toc-current>项目背景：把分散研究变成共同讨论</span></span><span data-case-toc-action aria-hidden="true">展开</span></button><ol id="case-toc-links"><li><a href="#case-variational-activities-1"><span aria-hidden="true">01</span>项目背景：把分散研究变成共同讨论</a></li><li><a href="#case-variational-activities-2"><span aria-hidden="true">02</span>我的角色：会前理解内容，会上组织表达</a></li><li><a href="#case-variational-activities-3"><span aria-hidden="true">03</span>信息研究：把消息发现与事实核对分开</a></li><li><a href="#case-variational-activities-4"><span aria-hidden="true">04</span>会议流程：目的、展示、点评与收尾</a></li><li><a href="#case-variational-activities-5"><span aria-hidden="true">05</span>具体案例：为不同现场节奏准备三种串场</a></li><li><a href="#case-variational-activities-6"><span aria-hidden="true">06</span>复盘方法：追问判断与调整的依据</a></li><li><a href="#case-variational-activities-7"><span aria-hidden="true">07</span>交付物：可复用的主持与研究结构</a></li><li><a href="#case-variational-activities-8"><span aria-hidden="true">08</span>我的收获：先讲清楚，再让讨论发生</a></li></ol><a class="reader-back" href="/work/" data-reading-back>返回作品集 <span aria-hidden="true">↗</span></a></nav>
+    <div class="case-chapters"><section class="case-chapter" id="case-variational-activities-1" tabindex="-1" aria-labelledby="case-variational-activities-1-title"><h2 id="case-variational-activities-1-title">项目背景：把分散研究变成共同讨论</h2><p>Variational 项目学习与积分赛周汇报中，参与者分别查资料、收集信息和形成观察。我的工作是把分散研究接到共同的汇报顺序、表达重点与反馈方式，让展示、点评和下一步行动能够衔接。</p></section><section class="case-chapter" id="case-variational-activities-2" tabindex="-1" aria-labelledby="case-variational-activities-2-title"><h2 id="case-variational-activities-2-title">我的角色：会前理解内容，会上组织表达</h2><p>会前整理项目说明与信息渠道，理解讨论内容，再准备开场、汇报提示、过渡和收尾。主持稿明确交流目的、展示顺序与时间；专业点评和结果整理由各自角色承担，我负责交接与节奏。</p></section><section class="case-chapter" id="case-variational-activities-3" tabindex="-1" aria-labelledby="case-variational-activities-3-title"><h2 id="case-variational-activities-3-title">信息研究：把消息发现与事实核对分开</h2><p>我将官方文档、公告、社群、团队表达与外部研究分层：先发现变化，重要判断再回到对应文档或产品状态核对，不把多次转述当成独立证据。</p><p>整理时标明原文、当时阶段、个人理解及待验证问题，让听众能追问来源，而不只接收一个结论。</p></section><section class="case-chapter" id="case-variational-activities-4" tabindex="-1" aria-labelledby="case-variational-activities-4-title"><h2 id="case-variational-activities-4-title">会议流程：目的、展示、点评与收尾</h2><p>主持稿按开场说明、PPT 汇报、点评与结果反馈、结束四个环节组织。开场交代目的、顺序和时间，每位参与者展示后留出反馈，再转入下一位。</p><p>全部展示结束后切换到整体点评，为工作人员整理反馈留出过渡，最后将讨论收回后续改进。</p></section><section class="case-chapter" id="case-variational-activities-5" tabindex="-1" aria-labelledby="case-variational-activities-5-title"><h2 id="case-variational-activities-5-title">具体案例：为不同现场节奏准备三种串场</h2><aside class="case-path" data-case-path="variational-activities" data-path-kind="activity" aria-label="为三种现场节奏准备串场"><h3>为三种现场节奏准备串场</h3><ol><li><strong>顺畅交接</strong><span>流程顺畅时简洁感谢分享者，再交给下一位。</span></li><li><strong>承接讨论</strong><span>需要继续讨论时，围绕表达是否精炼、逻辑是否完整组织过渡。</span></li><li><strong>提醒时间</strong><span>时间紧张时提醒下一位抓住重点、控制节奏。</span></li></ol><p class="path-note">展示主持与研究方法；未核实的宣发、交易和收益数字不作为成果。</p></aside><p>第一份主持稿为三种现场节奏分别准备表达，照顾分享者、听众和下一位。准备工作先核对研究材料与汇报重点，再明确展示顺序、每段时间和点评安排；现场根据任务选择串场方式。</p></section><section class="case-chapter" id="case-variational-activities-6" tabindex="-1" aria-labelledby="case-variational-activities-6-title"><h2 id="case-variational-activities-6-title">复盘方法：追问判断与调整的依据</h2><p>周复盘追问最初目标、信息依据、假设、验证方式、观察变化、调整原因和下一轮行动，把工作量描述转成可以讨论的判断过程。</p><p>AI 辅助归纳资料、整理记录和提出遗漏问题，判断仍回到来源与实际观察。</p></section><section class="case-chapter" id="case-variational-activities-7" tabindex="-1" aria-labelledby="case-variational-activities-7-title"><h2 id="case-variational-activities-7-title">交付物：可复用的主持与研究结构</h2><ul class="case-deliverables"><li>两份周汇报主持稿：开场、时间提醒、串场、点评衔接与收尾。</li><li>项目学习说明与信息渠道梳理：支持共同理解规则和追溯来源。</li><li>周复盘框架：按本轮主题更新问题，记录需要继续核对与行动的事项。</li></ul></section><section class="case-chapter" id="case-variational-activities-8" tabindex="-1" aria-labelledby="case-variational-activities-8-title"><h2 id="case-variational-activities-8-title">我的收获：先讲清楚，再让讨论发生</h2><p>主持需要同时理解内容和组织现场，让听众知道讨论重点，也让意见进入下一次行动。当前展示资料、主持与复盘方法，不使用未核验的宣发、交易或收益数字作为成绩。</p><p>下一步补齐逐场日期、本人承担环节、执行反馈和交流产出，用实际记录检查哪些安排值得保留。</p></section></div>
+    </div>
+
+    <section class="case-conversation" aria-labelledby="case-conversation-title"><div><p class="eyebrow">从这个案例继续聊</p><h2 id="case-conversation-title">你也在处理类似的问题？</h2><p>来信说明你的场景、目前卡住的环节，以及希望我参与哪一部分。</p></div><div class="contact-card"><a class="primary-action" href="mailto:michalflowers245@gmail.com?subject=%E5%85%B3%E4%BA%8E%E3%80%8CVariational%20%E6%B4%BB%E5%8A%A8%E4%B8%8E%E4%BC%A0%E6%92%AD%E5%AE%9E%E8%B7%B5%E3%80%8D%E7%9A%84%E4%BA%A4%E6%B5%81" data-case-contact>围绕这个项目交流 <span aria-hidden="true">↗</span></a><div class="case-contact-fallback"><a class="contact-email" href="mailto:michalflowers245@gmail.com">michalflowers245@gmail.com</a><button type="button" data-copy-email="michalflowers245@gmail.com" hidden>复制邮箱</button></div><p class="contact-feedback" data-contact-feedback role="status" aria-live="polite"></p></div></section>
+    <div class="detail-back"><a class="primary-action" href="/work/" data-reading-back>返回完整作品集 <span>→</span></a><a href="/resume/">查看经历简历</a></div>
+    <section class="related-work"><header class="section-flag"><div><h2>继续浏览</h2></div><a class="section-more" href="/work/">全部项目 →</a></header><div class="project-grid"><article class="project-card related-card project-card-text" id="card-xingcheng-maker-01" data-project="xingcheng-maker"><div class="project-card-body"><h3><a id="card-xingcheng-maker-01-title" href="/work/xingcheng-maker/" data-project-link="xingcheng-maker">星城创客 <span aria-hidden="true">↗</span></a></h3><p class="related-reason">继续看青年创业活动中的主持设计、现场互动与后续连接。</p><p class="project-status">平台持续运营</p></div></article><article class="project-card related-card project-card-text" id="card-tongluren-02" data-project="tongluren"><div class="project-card-body"><h3><a id="card-tongluren-02-title" href="/work/tongluren/" data-project-link="tongluren">同路人工作室 <span aria-hidden="true">↗</span></a></h3><p class="related-reason">了解资料研究如何嵌入团队协作和持续的社群交流。</p><p class="project-status">创业工作室 · 社群与项目协作</p></div></article></div></section>
+  </article></main>
+  <footer class="site-footer site-footer-compact">
+    <div class="page-shell footer-inner">
+
+      <div class="footer-links"><a href="/work/">完整作品集</a><a href="/resume/">经历简历</a><a href="mailto:michalflowers245@gmail.com">michalflowers245@gmail.com</a></div>
+    </div>
+    <div class="footer-bottom page-shell"><span>张熙 · ZHANG XI</span><span>在长沙学习和生活</span><a href="#main-content">回到顶部 ↑</a></div>
+  </footer>
+  <dialog class="lightbox" aria-labelledby="lightbox-title" data-zoom="fit"><div class="lightbox-shell"><header><h2 id="lightbox-title">项目图片</h2><button type="button" data-lightbox-close aria-label="关闭大图">关闭 <span aria-hidden="true">×</span></button><div class="lightbox-tools" role="group" aria-label="图片查看方式"><button type="button" data-lightbox-mode="fit" data-lightbox-fit aria-pressed="true" aria-controls="lightbox-image-area">完整原图</button><button type="button" data-lightbox-mode="focus" data-lightbox-focus aria-pressed="false" aria-controls="lightbox-image-area" hidden>重点区域</button><button type="button" data-lightbox-mode="actual" data-lightbox-zoom aria-pressed="false" aria-controls="lightbox-image-area">原尺寸读字</button></div></header><div class="lightbox-image-area" id="lightbox-image-area" tabindex="0" aria-label="图片区域，原尺寸模式可滚动查看"><img data-lightbox-image alt=""><div class="lightbox-error" hidden><p>大图暂未加载。</p><button type="button" data-lightbox-retry>重新加载图片</button></div></div><div class="lightbox-caption-area"><p data-lightbox-focus-note hidden></p><p data-lightbox-caption></p></div><div class="lightbox-actions"><button type="button" data-lightbox-prev>上一张</button><span data-lightbox-count aria-live="polite"></span><button type="button" data-lightbox-next>下一张</button></div></div></dialog>
+</body>
+</html>

@@ -1,0 +1,163 @@
+<!doctype html>
+<html lang="zh-CN" data-theme="light">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#fff8e8" data-theme-color>
+  <meta name="description" content="为青年创业者组织主题沙龙，串联嘉宾、招募、主持与需求收集；通过社群延续交流，连接人与项目资源。">
+  <meta property="og:title" content="星城创客｜张熙作品集">
+  <meta property="og:description" content="为青年创业者组织主题沙龙，串联嘉宾、招募、主持与需求收集；通过社群延续交流，连接人与项目资源。">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="zh_CN">
+
+  <title>星城创客｜张熙作品集</title>
+  <script>(function initializeTheme(){
+  const root=document.documentElement;
+  let choice=null;
+  try{const saved=localStorage.getItem('zhangxi-theme-reference');if(saved==='light'||saved==='dark')choice=saved;}catch{}
+  if(choice)root.dataset.themeChoice=choice;else delete root.dataset.themeChoice;
+  root.dataset.theme=choice||(matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light');
+  document.querySelector('[data-theme-color]')?.setAttribute('content',root.dataset.theme==='dark'?'#181817':'#fff8e8');
+})();</script>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='10' fill='%23080b0e'/%3E%3Cpath d='M15 18h34v8H37v22h-9V26H15z' fill='%23d8b678'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="/assets/site.css?v=67253512da1cc3a2">
+  <link rel="stylesheet" href="/assets/folio.css?v=67253512da1cc3a2">
+  <link rel="stylesheet" href="/assets/media.css?v=67253512da1cc3a2">
+  <link rel="stylesheet" href="/assets/refine.css?v=67253512da1cc3a2">
+  <script type="module" src="/assets/site.js?v=67253512da1cc3a2"></script>
+  <meta property="og:site_name" content="张熙作品集">
+  <meta property="og:image" content="/assets/portfolio/portrait-original.jpg">
+  <meta property="og:image:alt" content="张熙个人照片">
+  <meta property="og:image:width" content="960">
+  <meta property="og:image:height" content="1440">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="星城创客｜张熙作品集">
+  <meta name="twitter:description" content="为青年创业者组织主题沙龙，串联嘉宾、招募、主持与需求收集；通过社群延续交流，连接人与项目资源。">
+  <meta name="twitter:image" content="/assets/portfolio/portrait-original.jpg">
+  <meta name="twitter:image:alt" content="张熙个人照片">
+</head>
+<body class="page-work">
+  <a class="skip-link" href="#main-content">跳至正文</a>
+  <header class="site-header">
+    <div class="header-inner page-shell">
+      <a class="brand" href="/" aria-label="返回首页"><strong>张熙</strong><span>ZHANG XI</span></a>
+      <nav id="primary-navigation" aria-label="主导航">
+        <a href="/">首页</a><a href="/work/" aria-current="page">作品集</a><a href="/resume/">经历简历</a><a href="/about/">关于我</a><a href="/#contact">联系我</a>
+      </nav>
+      <div class="header-tools">
+        <button class="theme-toggle icon-button" type="button" aria-label="切换为深色主题" title="切换明暗主题"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="7.5"/><path d="M12 4.5v15a7.5 7.5 0 0 0 0-15Z" fill="currentColor" stroke="none"/></svg></button>
+        <button class="menu-toggle icon-button" type="button" aria-label="打开导航" aria-controls="primary-navigation" aria-expanded="false"><span></span><span></span></button>
+      </div>
+    </div>
+  </header>
+  <script>(function initializeShell(){
+  const root=document.documentElement;
+  const menu=document.querySelector('.menu-toggle'), nav=document.querySelector('#primary-navigation'),theme=document.querySelector('.theme-toggle');
+  const compact=matchMedia('(max-width:780px)'),systemTheme=matchMedia('(prefers-color-scheme: dark)');
+  let choice=['light','dark'].includes(root.dataset.themeChoice)?root.dataset.themeChoice:null;
+  let lastStoredChoice=choice,memoryOnlyChoice=false;
+  const syncTheme=()=>{const dark=root.dataset.theme==='dark';theme.setAttribute('aria-label',dark?'切换为浅色主题':'切换为深色主题');document.querySelector('[data-theme-color]')?.setAttribute('content',dark?'#181817':'#fff8e8');};
+  const applyTheme=()=>{if(choice)root.dataset.themeChoice=choice;else delete root.dataset.themeChoice;root.dataset.theme=choice||(systemTheme.matches?'dark':'light');syncTheme();};
+  const refreshStoredTheme=()=>{
+    let saved;
+    try{const value=localStorage.getItem('zhangxi-theme-reference');saved=value==='light'||value==='dark'?value:null;}catch{applyTheme();return;}
+    // A returned BFCache page adopts newer persisted choices. A failed local
+    // write keeps its in-memory choice unless a different valid choice appears.
+    if(!memoryOnlyChoice||(saved&&saved!==lastStoredChoice)){choice=saved;memoryOnlyChoice=false;}
+    lastStoredChoice=saved;applyTheme();
+  };
+  const menuOpen=()=>menu.getAttribute('aria-expanded')==='true';
+  const firstNavLink=()=>nav.querySelector('a[href]');
+  let lastFocused=null,wasCompact=compact.matches;
+  const setMenu=(open,restore=false)=>{
+    // Only reclaim focus when closing the region which still owns it.
+    const returnFocus=!open&&compact.matches&&(restore||nav.contains(document.activeElement));
+    if(returnFocus)menu.focus({preventScroll:true});
+    menu.setAttribute('aria-expanded',String(open));menu.setAttribute('aria-label',open?'关闭导航':'打开导航');
+    nav.toggleAttribute('data-open',open);if(open)nav.scrollTop=0;
+  };
+  theme.addEventListener('click',()=>{choice=root.dataset.theme==='dark'?'light':'dark';try{localStorage.setItem('zhangxi-theme-reference',choice);lastStoredChoice=choice;memoryOnlyChoice=false;}catch{memoryOnlyChoice=true;}applyTheme();});
+  systemTheme.addEventListener('change',()=>{if(!choice)applyTheme();});
+  window.addEventListener('pageshow',refreshStoredTheme);
+  window.addEventListener('storage',event=>{if(event.key===null||event.key==='zhangxi-theme-reference')refreshStoredTheme();});
+  menu.addEventListener('click',event=>{
+    const open=!menuOpen();setMenu(open);
+    // Keyboard / assistive activation enters the disclosure; pointer opening does not steal focus.
+    if(open&&event.detail===0)firstNavLink()?.focus({preventScroll:true});
+  });
+  menu.addEventListener('keydown',event=>{
+    // Also support switching from a pointer-opened disclosure to keyboard navigation.
+    if(event.key==='Tab'&&!event.shiftKey&&menuOpen()){
+      event.preventDefault();firstNavLink()?.focus({preventScroll:true});
+    }
+  });
+  nav.addEventListener('click',event=>{
+    if(event.target.closest('a')&&event.button===0&&!event.metaKey&&!event.ctrlKey&&!event.shiftKey&&!event.altKey)setMenu(false);
+  });
+  document.addEventListener('focusin',event=>{
+    lastFocused=event.target;
+    // This is a non-modal disclosure: forward and reverse Tab may leave it normally.
+    if(menuOpen()&&!nav.contains(event.target)&&event.target!==menu)setMenu(false);
+  });
+  document.addEventListener('focusout',event=>{
+    // Preserve the owner when CSS hides it, regardless of media-query/blur order.
+    // A move from a visible control to blank content is not a resize focus request.
+    if(!event.relatedTarget&&compact.matches===wasCompact&&event.target.getClientRects().length)lastFocused=null;
+  });
+  document.addEventListener('keydown',event=>{
+    if(event.key==='Escape'&&menuOpen()){event.preventDefault();setMenu(false,true);}
+  });
+  document.addEventListener('click',event=>{if(!event.target.closest('.site-header')&&menuOpen())setMenu(false);});
+  compact.addEventListener('change',()=>{
+    const active=document.activeElement===document.body?lastFocused:document.activeElement;
+    const toMenu=compact.matches&&nav.contains(active),toNav=!compact.matches&&active===menu;
+    wasCompact=compact.matches;setMenu(false);
+    if(toMenu)menu.focus({preventScroll:true});else if(toNav)firstNavLink()?.focus({preventScroll:true});
+  });applyTheme();root.classList.add('has-js');
+})();</script>
+  <main id="main-content"><article class="project-detail page-shell has-case-story" data-case-reader>
+    <nav class="detail-breadcrumb" aria-label="项目位置"><a href="/work/">作品集</a><span aria-hidden="true">/</span><a href="/work/#venture">创业项目与平台</a></nav>
+
+    <header class="detail-hero">
+      <div class="detail-heading"><div class="detail-meta"><span class="project-type">青年创业平台</span><time>2025.03 — 至今</time></div><h1>星城创客</h1><p class="detail-role">主理人 · 活动运营与资源连接</p><p class="detail-phase">平台持续运营</p><p class="detail-intro">活动可以带来短期参与，但如果缺少持续关系和项目承接，现场交流难以转化成实际合作。</p><div class="case-shortcuts"><a class="primary-action" href="#story-xingcheng-maker" data-story-link>先看具体过程 <span aria-hidden="true">↓</span></a><a class="secondary-action" data-evidence-link href="#case-xingcheng-maker-4">查看活动记录 <span aria-hidden="true">↓</span></a><a class="secondary-action" data-evidence-link href="#case-xingcheng-maker-5">阅读主持设计 <span aria-hidden="true">↓</span></a></div></div>
+    </header>
+    <section class="case-story" id="story-xingcheng-maker" data-storyboard="xingcheng-maker" tabindex="-1" aria-labelledby="story-xingcheng-maker-title"><header class="story-heading"><p class="eyebrow">案例速览</p><h2 id="story-xingcheng-maker-title">为一次主题分享，设计交流路径</h2><p>以第 93 期跨境创业主题为例，连接参与者需求、嘉宾内容与自由交流。</p><p class="story-contribution"><strong>我的工作</strong>负责主持稿和互动设计；嘉宾提供跨境观点与经营经验。</p></header><ol class="story-steps"><li class="story-step" data-story-chapter="5"><div class="story-step-heading"><span aria-hidden="true">01</span><h3>先说清能提供什么、需要什么</h3></div><p class="story-step-text">用 20 秒介绍引导参与者说出行业、已有资源和所需支持，让其他人找到具体的交流切入点。</p><details class="step-evidence" id="story-xingcheng-maker-evidence-1" data-reading-disclosure><summary>查看主持稿节选</summary><blockquote class="story-quote"><p>你从事什么行业、有什么资源、目前需要什么支持。</p></blockquote><p class="story-source">第 93 期主持稿 · 自我介绍</p></details></li><li class="story-step" data-story-chapter="5"><div class="story-step-heading"><span aria-hidden="true">02</span><h3>从听众的疑问进入嘉宾主题</h3></div><p class="story-step-text">先提出个人或小团队如何起步、市场机会在哪里，再介绍嘉宾与主题，让分享回应听众的问题。</p><details class="step-evidence" id="story-xingcheng-maker-evidence-2" data-reading-disclosure><summary>查看主持稿节选</summary><blockquote class="story-quote"><p>没有大团队和大量资金，个人或小团队能不能做跨境电商？</p></blockquote><p class="story-source">第 93 期主持稿 · 嘉宾分享</p></details></li><li class="story-step" data-story-chapter="5"><div class="story-step-heading"><span aria-hidden="true">03</span><h3>把问答接到自由交流</h3></div><p class="story-step-text">围绕选品、起步、物流、收款与合规提示具体问题，再引导参与者与嘉宾或感兴趣的伙伴继续交流。</p><details class="step-evidence" id="story-xingcheng-maker-evidence-3" data-reading-disclosure><summary>查看主持稿节选</summary><blockquote class="story-quote"><p>问题越具体，越容易得到有价值的答案。</p></blockquote><p class="story-source">第 93 期主持稿 · 问答与自由交流</p></details></li></ol><div class="story-conclusion"><div class="story-decision"><span class="eyebrow">关键判断</span><h3>让参与者知道该说什么</h3><p>先说资源和需求，再提出具体问题，让交流有可以继续的切入点。</p></div><div class="story-outcome"><span class="eyebrow">形成的交付</span><p>一份覆盖开场、自我介绍、嘉宾衔接、问答和自由交流的主持稿。</p><p class="story-stage"><strong>当前阶段：</strong>第 93 期主持设计，非现场逐字实录；图册中的第 83、85 期照片独立展示。</p></div></div><details class="story-verification" id="story-xingcheng-maker-verification" data-reading-disclosure><summary>材料范围与核验说明</summary><p>尚缺本期对应的现场照片和后续合作记录，不能据主持稿认定资源撮合已经发生。</p></details><div class="story-actions"><a class="story-read-more" href="#case-xingcheng-maker-5" data-story-link>核对第 93 期主持稿节选 <span aria-hidden="true">↓</span></a><a class="story-read-more" href="#case-xingcheng-maker-1" data-story-link>继续阅读完整案例 <span aria-hidden="true">↓</span></a></div></section><details class="case-context" id="case-context-xingcheng-maker" data-reading-disclosure><summary>项目概况与阶段数据 <span>服务对象、交付与历史记录</span></summary><section class="case-brief" aria-label="项目概览"><dl class="brief-fields"><div><dt>服务对象</dt><dd>长沙青年创业者、开发者、学生与本地团队。</dd></div><div><dt>我的工作</dt><dd>负责主题策划、主持与活动后的资源连接。</dd></div><div class="brief-delivery"><dt>形成的交付</dt><dd>主题活动、招募与主持设计、社群交流和活动后需求连接。</dd></div></dl><dl class="detail-facts"><div class="detail-fact"><dt>主持稿案例</dt><dd>86 / 93 / 94 期</dd></div><div class="detail-fact"><dt>对应主题现场</dt><dd>83 / 85 期</dd></div><div class="detail-fact"><dt>平台实践</dt><dd>主题活动</dd></div><div class="detail-fact"><dt>个人工作</dt><dd>资源连接</dd></div></dl><p class="case-stage"><strong>项目阶段：</strong>持续运营的创业平台。86 场等数字为早期阶段记录；现场照片与主持案例按各自场次标注。</p></section></details>
+    <div class="case-reading"><nav class="case-contents" aria-label="本项目内容目录" data-case-toc><p class="eyebrow">阅读目录</p><button type="button" data-case-toc-toggle aria-expanded="true" aria-controls="case-toc-links" hidden><span>目录 · <span data-case-toc-current>面向青年创业者的连接平台</span></span><span data-case-toc-action aria-hidden="true">展开</span></button><ol id="case-toc-links"><li><a href="#case-xingcheng-maker-1"><span aria-hidden="true">01</span>面向青年创业者的连接平台</a></li><li><a href="#case-xingcheng-maker-2"><span aria-hidden="true">02</span>我的职责与协作分工</a></li><li><a href="#case-xingcheng-maker-3"><span aria-hidden="true">03</span>关键判断：交流需要具体问题</a></li><li><a href="#case-xingcheng-maker-4"><span aria-hidden="true">04</span>活动组织与现场记录</a></li><li><a href="#case-xingcheng-maker-5"><span aria-hidden="true">05</span>案例：第 93 期的主持设计</a></li><li><a href="#case-xingcheng-maker-6"><span aria-hidden="true">06</span>不同主题的活动组织</a></li><li><a href="#case-xingcheng-maker-7"><span aria-hidden="true">07</span>阶段结果与交付材料</a></li><li><a href="#case-xingcheng-maker-8"><span aria-hidden="true">08</span>复盘：从相识走向持续协作</a></li></ol><a class="reader-back" href="/work/" data-reading-back>返回作品集 <span aria-hidden="true">↗</span></a></nav>
+    <div class="case-chapters"><section class="case-chapter" id="case-xingcheng-maker-1" tabindex="-1" aria-labelledby="case-xingcheng-maker-1-title"><h2 id="case-xingcheng-maker-1-title">面向青年创业者的连接平台</h2><p>从 2025 年 3 月起，我担任星城创客主理人，围绕创业、AI 应用、产品实践和资源对接组织活动，连接创业者、企业从业者、开发者与高校学生。</p><p>平台从主题活动起步，以线上社群承接后续交流，逐步探索创业者共创与项目服务：让带着业务问题、技术或渠道的人，在一次见面之后还能继续合作。</p></section><section class="case-chapter" id="case-xingcheng-maker-2" tabindex="-1" aria-labelledby="case-xingcheng-maker-2-title"><h2 id="case-xingcheng-maker-2-title">我的职责与协作分工</h2><p>我负责主题策划、嘉宾沟通、校园与社群传播、参与者组织、现场主持和复盘，并通过创业者访谈跟进需求与资源连接。核心成员与社群共同支持现场执行，平台成果由团队共同完成。</p><p>我连接过企业 AI 实验室、高校、本地技术社群和创业者，先明确双方的资源与需求，再讨论分享或协作。资源联系与正式业务合作分别记录。</p></section><section class="case-chapter" id="case-xingcheng-maker-3" tabindex="-1" aria-labelledby="case-xingcheng-maker-3-title"><h2 id="case-xingcheng-maker-3-title">关键判断：交流需要具体问题</h2><p>只介绍姓名和身份，参与者仍然不知道该找谁。我把自我介绍聚焦到行业、可提供的资源和当前需求，让交流有具体对象。议题也从行业概念落到行动问题，再按主题准备提问，不套用同一份问答。</p></section><section class="case-chapter" id="case-xingcheng-maker-4" tabindex="-1" aria-labelledby="case-xingcheng-maker-4-title"><h2 id="case-xingcheng-maker-4-title">活动组织与现场记录</h2><div class="detail-media"><section class="gallery gallery-detail" data-gallery="xingcheng-maker" aria-label="星城创客图片材料">
+    <div class="gallery-track" id="gallery-xingcheng-maker"><figure class="gallery-slide" data-image-id="xingcheng-cafe-talk" data-kind="photo" data-layout="wide" style="--media-ratio:1505/1080;--native-width:1505px">
+      <div class="gallery-image-wrap"><a class="gallery-open" href="/assets/portfolio/xingcheng-cafe-talk-original.jpg" data-lightbox aria-label="放大查看：星城创客项目记录中的咖啡厅主题分享，讲者与听众同框"><img src="/assets/portfolio/xingcheng-cafe-talk-960.webp" srcset="/assets/portfolio/xingcheng-cafe-talk-160.webp 160w, /assets/portfolio/xingcheng-cafe-talk-480.webp 480w, /assets/portfolio/xingcheng-cafe-talk-960.webp 960w, /assets/portfolio/xingcheng-cafe-talk-1440.webp 1440w" sizes="(max-width: 760px) calc(100vw - 48px), 680px" width="1505" height="1080" alt="星城创客项目记录中的咖啡厅主题分享，讲者与听众同框" loading="lazy" decoding="async"></a><div class="media-error" hidden><p>图片暂未加载，文字内容仍可阅读。</p><button type="button" data-retry>重新加载图片</button></div></div>
+      <figcaption>主题分享 · 以“本地生活”为题的咖啡厅交流现场。来自星城创客活动档案，具体场次未标注。</figcaption></figure><figure class="gallery-slide" data-image-id="xingcheng-83-photo" data-kind="photo" data-layout="wide" style="--media-ratio:1440/960;--native-width:1440px">
+      <div class="gallery-image-wrap"><a class="gallery-open" href="/assets/portfolio/xingcheng-83-photo-original.jpg" data-lightbox aria-label="放大查看：星城创客第83期AI与OPC主题活动的参会者及投影画面"><img src="/assets/portfolio/xingcheng-83-photo-960.webp" srcset="/assets/portfolio/xingcheng-83-photo-480.webp 480w, /assets/portfolio/xingcheng-83-photo-960.webp 960w, /assets/portfolio/xingcheng-83-photo-1440.webp 1440w" sizes="(max-width: 760px) calc(100vw - 48px), 680px" width="1440" height="960" alt="星城创客第83期AI与OPC主题活动的参会者及投影画面" loading="lazy" decoding="async"></a><div class="media-error" hidden><p>图片暂未加载，文字内容仍可阅读。</p><button type="button" data-retry>重新加载图片</button></div></div>
+      <figcaption>第83期 · AI 与 OPC，2026年6月11日。现场画面保留参会者与完整投影；不是第93期主持案例的现场照。</figcaption></figure><figure class="gallery-slide" data-image-id="xingcheng-85-photo" data-kind="photo" data-layout="wide" style="--media-ratio:1440/960;--native-width:1440px">
+      <div class="gallery-image-wrap"><a class="gallery-open" href="/assets/portfolio/xingcheng-85-photo-original.jpg" data-lightbox aria-label="放大查看：星城创客第85期GEO主题活动，讲者分享与参会全景"><img src="/assets/portfolio/xingcheng-85-photo-960.webp" srcset="/assets/portfolio/xingcheng-85-photo-480.webp 480w, /assets/portfolio/xingcheng-85-photo-960.webp 960w, /assets/portfolio/xingcheng-85-photo-1440.webp 1440w" sizes="(max-width: 760px) calc(100vw - 48px), 680px" width="1440" height="960" alt="星城创客第85期GEO主题活动，讲者分享与参会全景" loading="lazy" decoding="async"></a><div class="media-error" hidden><p>图片暂未加载，文字内容仍可阅读。</p><button type="button" data-retry>重新加载图片</button></div></div>
+      <figcaption>第85期 · GEO主题交流。投影主题与该期海报对应，照片本身未提供日期。</figcaption></figure><figure class="gallery-slide" data-image-id="xingcheng-group" data-kind="photo" data-layout="wide" data-focus="{&quot;x&quot;:0.04,&quot;y&quot;:0.58,&quot;width&quot;:0.94,&quot;height&quot;:0.42,&quot;label&quot;:&quot;合影中的参与者与共创标语（局部）&quot;}" style="--media-ratio:1706/1280;--native-width:1706px">
+      <div class="gallery-image-wrap"><a class="gallery-open" href="/assets/portfolio/xingcheng-group-original.jpg" data-lightbox aria-label="放大查看：手持星城创客、连接资源与项目共创标语的活动合影"><img src="/assets/portfolio/xingcheng-group-960.webp" srcset="/assets/portfolio/xingcheng-group-160.webp 160w, /assets/portfolio/xingcheng-group-480.webp 480w, /assets/portfolio/xingcheng-group-960.webp 960w, /assets/portfolio/xingcheng-group-1440.webp 1440w" sizes="(max-width: 760px) calc(100vw - 48px), 680px" width="1706" height="1280" alt="手持星城创客、连接资源与项目共创标语的活动合影" loading="lazy" decoding="async"></a><div class="media-error" hidden><p>图片暂未加载，文字内容仍可阅读。</p><button type="button" data-retry>重新加载图片</button></div></div>
+      <figcaption>活动合影 · 参与者手持“连接资源”“项目共创”等标语，呈现平台的交流氛围。具体场次未标注，不用于说明某一期的到场人数。</figcaption></figure><figure class="gallery-slide" data-image-id="xingcheng-roundtable" data-kind="photo" data-layout="wide" style="--media-ratio:1440/1080;--native-width:1440px">
+      <div class="gallery-image-wrap"><a class="gallery-open" href="/assets/portfolio/xingcheng-roundtable-original.jpg" data-lightbox aria-label="放大查看：星城创客活动记录中的围桌交流场景"><img src="/assets/portfolio/xingcheng-roundtable-960.webp" srcset="/assets/portfolio/xingcheng-roundtable-160.webp 160w, /assets/portfolio/xingcheng-roundtable-480.webp 480w, /assets/portfolio/xingcheng-roundtable-960.webp 960w, /assets/portfolio/xingcheng-roundtable-1440.webp 1440w" sizes="(max-width: 760px) calc(100vw - 48px), 680px" width="1440" height="1080" alt="星城创客活动记录中的围桌交流场景" loading="lazy" decoding="async"></a><div class="media-error" hidden><p>图片暂未加载，文字内容仍可阅读。</p><button type="button" data-retry>重新加载图片</button></div></div>
+      <figcaption>围桌交流 · 参与者面对面沟通的活动场景。来自项目活动档案，具体场次未标注。</figcaption></figure><figure class="gallery-slide" data-image-id="xingcheng-workshop" data-kind="photo" data-layout="wide" style="--media-ratio:1440/1080;--native-width:1440px">
+      <div class="gallery-image-wrap"><a class="gallery-open" href="/assets/portfolio/xingcheng-workshop-original.jpg" data-lightbox aria-label="放大查看：星城创客活动档案中的小组反馈与协作，投屏显示互赠反馈"><img src="/assets/portfolio/xingcheng-workshop-960.webp" srcset="/assets/portfolio/xingcheng-workshop-160.webp 160w, /assets/portfolio/xingcheng-workshop-480.webp 480w, /assets/portfolio/xingcheng-workshop-960.webp 960w, /assets/portfolio/xingcheng-workshop-1440.webp 1440w" sizes="(max-width: 760px) calc(100vw - 48px), 680px" width="1440" height="1080" alt="星城创客活动档案中的小组反馈与协作，投屏显示互赠反馈" loading="lazy" decoding="async"></a><div class="media-error" hidden><p>图片暂未加载，文字内容仍可阅读。</p><button type="button" data-retry>重新加载图片</button></div></div>
+      <figcaption>小组协作 · 围绕“互赠反馈”进行讨论与记录。来自项目活动档案，具体场次未标注。</figcaption></figure><figure class="gallery-slide" data-image-id="xingcheng-participant" data-kind="photo" data-layout="wide" style="--media-ratio:1440/960;--native-width:1440px">
+      <div class="gallery-image-wrap"><a class="gallery-open" href="/assets/portfolio/xingcheng-participant-original.jpg" data-lightbox aria-label="放大查看：星城创客活动中参与者持麦交流，周围听众共同参与"><img src="/assets/portfolio/xingcheng-participant-960.webp" srcset="/assets/portfolio/xingcheng-participant-160.webp 160w, /assets/portfolio/xingcheng-participant-480.webp 480w, /assets/portfolio/xingcheng-participant-960.webp 960w, /assets/portfolio/xingcheng-participant-1440.webp 1440w" sizes="(max-width: 760px) calc(100vw - 48px), 680px" width="1440" height="960" alt="星城创客活动中参与者持麦交流，周围听众共同参与" loading="lazy" decoding="async"></a><div class="media-error" hidden><p>图片暂未加载，文字内容仍可阅读。</p><button type="button" data-retry>重新加载图片</button></div></div>
+      <figcaption>现场交流 · 参与者持麦表达与听众互动。来自项目活动档案，具体场次未标注。</figcaption></figure><figure class="gallery-slide" data-image-id="xingcheng-event" data-kind="photo" data-layout="wide" style="--media-ratio:1440/1080;--native-width:1440px">
+      <div class="gallery-image-wrap"><a class="gallery-open" href="/assets/projects/xingcheng-event-original.jpg" data-lightbox aria-label="放大查看：星城创客AIGC短剧主题活动开始前的空场布置"><img src="/assets/projects/xingcheng-event-original.jpg" width="1440" height="1080" alt="星城创客AIGC短剧主题活动开始前的空场布置" loading="lazy" decoding="async"></a><div class="media-error" hidden><p>图片暂未加载，文字内容仍可阅读。</p><button type="button" data-retry>重新加载图片</button></div></div>
+      <figcaption>第84期 · AIGC短剧，2026年6月18日的空场布置。此图说明活动空间，不作到场人数或参会实况证据。</figcaption></figure></div>
+    <div class="gallery-controls" hidden><button type="button" data-previous aria-controls="gallery-xingcheng-maker" aria-label="上一张图片">上一张</button><span data-gallery-count aria-live="polite" aria-atomic="true">1 / 8</span><button type="button" data-next aria-controls="gallery-xingcheng-maker" aria-label="下一张图片">下一张</button><button type="button" data-enlarge aria-haspopup="dialog">放大查看</button></div>
+    <div class="gallery-focus-entry" hidden><span>图片重点：<span data-focus-label></span></span></div>
+    <div class="gallery-thumbs" aria-label="选择图片，可横向浏览" hidden><button type="button" data-image-select="0" aria-label="第 1 张：主题分享 · 以“本地生活”为题的咖啡厅交流现场。来自星城创客活动档案，具体场次未标注。" aria-pressed="true"><img src="/assets/portfolio/xingcheng-cafe-talk-160.webp" alt="" width="72" height="44" loading="lazy"><span class="thumb-number">01</span><span class="thumb-label">主题分享</span></button><button type="button" data-image-select="1" aria-label="第 2 张：第83期 · AI 与 OPC，2026年6月11日。现场画面保留参会者与完整投影；不是第93期主持案例的现场照。" aria-pressed="false"><img src="/assets/portfolio/xingcheng-83-photo-480.webp" alt="" width="72" height="44" loading="lazy"><span class="thumb-number">02</span><span class="thumb-label">83期实况</span></button><button type="button" data-image-select="2" aria-label="第 3 张：第85期 · GEO主题交流。投影主题与该期海报对应，照片本身未提供日期。" aria-pressed="false"><img src="/assets/portfolio/xingcheng-85-photo-480.webp" alt="" width="72" height="44" loading="lazy"><span class="thumb-number">03</span><span class="thumb-label">85期实况</span></button><button type="button" data-image-select="3" aria-label="第 4 张：活动合影 · 参与者手持“连接资源”“项目共创”等标语，呈现平台的交流氛围。具体场次未标注，不用于说明某一期的到场人数。" aria-pressed="false"><img src="/assets/portfolio/xingcheng-group-160.webp" alt="" width="72" height="44" loading="lazy"><span class="thumb-number">04</span><span class="thumb-label">活动合影</span></button><button type="button" data-image-select="4" aria-label="第 5 张：围桌交流 · 参与者面对面沟通的活动场景。来自项目活动档案，具体场次未标注。" aria-pressed="false"><img src="/assets/portfolio/xingcheng-roundtable-160.webp" alt="" width="72" height="44" loading="lazy"><span class="thumb-number">05</span><span class="thumb-label">围桌交流</span></button><button type="button" data-image-select="5" aria-label="第 6 张：小组协作 · 围绕“互赠反馈”进行讨论与记录。来自项目活动档案，具体场次未标注。" aria-pressed="false"><img src="/assets/portfolio/xingcheng-workshop-160.webp" alt="" width="72" height="44" loading="lazy"><span class="thumb-number">06</span><span class="thumb-label">小组协作</span></button><button type="button" data-image-select="6" aria-label="第 7 张：现场交流 · 参与者持麦表达与听众互动。来自项目活动档案，具体场次未标注。" aria-pressed="false"><img src="/assets/portfolio/xingcheng-participant-160.webp" alt="" width="72" height="44" loading="lazy"><span class="thumb-number">07</span><span class="thumb-label">持麦交流</span></button><button type="button" data-image-select="7" aria-label="第 8 张：第84期 · AIGC短剧，2026年6月18日的空场布置。此图说明活动空间，不作到场人数或参会实况证据。" aria-pressed="false"><img src="/assets/projects/xingcheng-event-original.jpg" alt="" width="72" height="44" loading="lazy"><span class="thumb-number">08</span><span class="thumb-label">84期布置</span></button></div>
+  </section></div><ol class="case-steps"><li>确定主题与嘉宾：围绕参与者正在面对的问题组织内容，与分享者沟通背景和讨论范围。</li><li>组织传播与参与：通过校园和社群触达合适的人，说明主题和参与价值，并协调现场资源。</li><li>设计主持流程：安排开场、简短介绍、分享、问答及自由交流，准备提问方向和衔接语。</li><li>承接活动后联系：整理需求与复盘信息，继续访谈和资源对接，让下一步沟通有对象、有问题。</li></ol><p class="case-evidence"><span>材料说明</span>图册呈现主题分享、合影、围桌交流、小组反馈与参会表达。第 83 期 AI 与 OPC、第 85 期 GEO、第 84 期空场分别标注，其余按档案场景展示；均不作为下一节第 93 期的现场实录。</p></section><section class="case-chapter" id="case-xingcheng-maker-5" tabindex="-1" aria-labelledby="case-xingcheng-maker-5-title"><h2 id="case-xingcheng-maker-5-title">案例：第 93 期的主持设计</h2><aside class="source-excerpt" data-evidence-excerpt="host-93-excerpts" aria-labelledby="evidence-host-93-excerpts"><p class="excerpt-source">《星城创客第93期主持词（精简版）》· 自我介绍、嘉宾衔接与问答</p><h3 id="evidence-host-93-excerpts">第 93 期主持稿：三处现场引导</h3><p>我把主持稿分成需求表达、主题引入与具体提问。下面保留原稿中的实际措辞，展示每一段怎样服务于交流。</p><dl><div><dt>让参与者说清需求</dt><dd>“接下来请大家用20秒介绍自己：你从事什么行业、有什么资源、目前需要什么支持。”</dd></div><div><dt>从听众问题引入嘉宾</dt><dd>“没有大团队和大量资金，个人或小团队能不能做跨境电商？俄罗斯市场有哪些机会？内容、流量和交易又如何形成闭环？”</dd></div><div><dt>把问答拉回具体问题</dt><dd>“问题越具体，越容易得到有价值的答案。大家可以开始提问。”</dd></div></dl><p class="excerpt-note">节选展示本人主持设计；市场观点与经营案例属于嘉宾。主持稿不是逐字现场实录。</p></aside><details class="case-method-details" id="case-method-xingcheng-maker-5" data-reading-disclosure><summary>展开流程概要</summary><aside class="case-path" data-case-path="xingcheng-maker" data-path-kind="activity" aria-label="第 93 期：让分享接到需求"><h3>第 93 期：让分享接到需求</h3><ol><li><strong>确定议题</strong><span>以俄罗斯跨境电商为题，将讨论落到个人或小团队如何起步。</span></li><li><strong>设计主持</strong><span>我准备简短自我介绍、嘉宾衔接和问答，把行业、资源与需求带入交流。</span></li><li><strong>留下材料</strong><span>主持稿说明组织方法；嘉宾演示承载市场、选品与工具分享内容。</span></li></ol><p class="path-note">主持设计与嘉宾观点分开归属；前章照片不作为第 93 期现场实录。</p></aside></details><p>第 93 期主题是“OPC 俄罗斯跨境电商市场红利”。除主持稿中的引导外，我围绕选品、新手起步、个人 IP 与订单、物流和收款准备问答，并负责引导提问与控时；问答后安排自由交流，供参与者继续请教嘉宾、寻找与需求相符的人。</p><p>配套演示封面标注 2026 年 8 月，内容包括俄罗斯市场、Ozon 平台、选品、学生团队及 AI 工具。主持稿呈现我的开场、嘉宾衔接与互动设计，演示中的市场观点和经营案例归属于分享者。</p><p class="case-evidence"><span>材料说明</span>第 93 期主持词与《把握俄罗斯 OPC 市场红利》演示，分别说明活动如何组织、嘉宾分享什么。</p></section><section class="case-chapter" id="case-xingcheng-maker-6" tabindex="-1" aria-labelledby="case-xingcheng-maker-6-title"><h2 id="case-xingcheng-maker-6-title">不同主题的活动组织</h2><p>第 86 期主持稿围绕企业 AI 转型，准备了 Agent 从哪个流程开始、小团队怎样用 AI 等问题。第 94 期主持稿围绕千川投放，设计先以举手了解广告与直播经验，再用举手或纸条收集问题。90 至 94 期主题档案如下：</p><ul class="case-deliverables"><li>第 90 期：商界 AI·星空分享 AI 短视频内容生产、工具使用与服务方案。</li><li>第 91 期：青少年 AI 科技素养研学营的课程、项目实践与合作介绍。</li><li>第 92 期：算法赋能投资与交易研究方法，由青树量化嘉宾分享。</li><li>第 93 期：俄罗斯 OPC 跨境电商，配套主持词与嘉宾演示。</li><li>第 94 期：抖音广告投放，内容涉及电商带货、本地门店及团队协作。</li></ul></section><section class="case-chapter" id="case-xingcheng-maker-7" tabindex="-1" aria-labelledby="case-xingcheng-maker-7-title"><h2 id="case-xingcheng-maker-7-title">阶段结果与交付材料</h2><p>上述数字是本人早期经历记录，不是实时统计；期号用于定位材料，不用于推算我个人主持或组织的场数。嘉宾的产品、经营数据及教学成果归属分享者。</p><ul class="case-deliverables"><li>早期经历记录：800+ 参与者、累计 2000+ 触达人次，4 个创业者社群、约 10 名核心成员。</li><li>形成平台介绍、86／93／94 期主持稿，以及 90 至 94 期的嘉宾分享材料，保留不同主题的组织档案。</li></ul></section><section class="case-chapter" id="case-xingcheng-maker-8" tabindex="-1" aria-labelledby="case-xingcheng-maker-8-title"><h2 id="case-xingcheng-maker-8-title">复盘：从相识走向持续协作</h2><p>活动价值不只看参与人数，还要看需求是否讲清、资源是否合适、后续由谁跟进。下一步是把活动后的联系沉淀为可回看的项目记录：谁提出问题、连接了谁、下一次沟通是什么。</p></section></div>
+    </div>
+
+    <section class="case-conversation" aria-labelledby="case-conversation-title"><div><p class="eyebrow">从这个案例继续聊</p><h2 id="case-conversation-title">你也在处理类似的问题？</h2><p>来信说明你的场景、目前卡住的环节，以及希望我参与哪一部分。</p></div><div class="contact-card"><a class="primary-action" href="mailto:michalflowers245@gmail.com?subject=%E5%85%B3%E4%BA%8E%E3%80%8C%E6%98%9F%E5%9F%8E%E5%88%9B%E5%AE%A2%E3%80%8D%E7%9A%84%E4%BA%A4%E6%B5%81" data-case-contact>围绕这个项目交流 <span aria-hidden="true">↗</span></a><div class="case-contact-fallback"><a class="contact-email" href="mailto:michalflowers245@gmail.com">michalflowers245@gmail.com</a><button type="button" data-copy-email="michalflowers245@gmail.com" hidden>复制邮箱</button></div><p class="contact-feedback" data-contact-feedback role="status" aria-live="polite"></p></div></section>
+    <div class="detail-back"><a class="primary-action" href="/work/" data-reading-back>返回完整作品集 <span>→</span></a><a href="/resume/">查看经历简历</a></div>
+    <section class="related-work"><header class="section-flag"><div><h2>继续浏览</h2></div><a class="section-more" href="/work/">全部项目 →</a></header><div class="project-grid"><article class="project-card related-card project-card-text" id="card-variational-activities-01" data-project="variational-activities"><div class="project-card-body"><h3><a id="card-variational-activities-01-title" href="/work/variational-activities/" data-project-link="variational-activities">Variational 活动与传播实践 <span aria-hidden="true">↗</span></a></h3><p class="related-reason">继续看资料研究、主持串场和周汇报中的控时方法。</p><p class="project-status">主持流程与复盘方法</p></div></article><article class="project-card related-card project-card-text" id="card-rally-02" data-project="rally"><div class="project-card-body"><h3><a id="card-rally-02-title" href="/work/rally/" data-project-link="rally">Mazi 活动众筹平台 <span aria-hidden="true">↗</span></a></h3><p class="related-reason">从实际活动组织，继续看报名、成团与履约如何转成产品流程。</p><p class="project-status">公开站点可访问 · 交易链路待验收</p></div></article></div></section>
+  </article></main>
+  <footer class="site-footer site-footer-compact">
+    <div class="page-shell footer-inner">
+
+      <div class="footer-links"><a href="/work/">完整作品集</a><a href="/resume/">经历简历</a><a href="mailto:michalflowers245@gmail.com">michalflowers245@gmail.com</a></div>
+    </div>
+    <div class="footer-bottom page-shell"><span>张熙 · ZHANG XI</span><span>在长沙学习和生活</span><a href="#main-content">回到顶部 ↑</a></div>
+  </footer>
+  <dialog class="lightbox" aria-labelledby="lightbox-title" data-zoom="fit"><div class="lightbox-shell"><header><h2 id="lightbox-title">项目图片</h2><button type="button" data-lightbox-close aria-label="关闭大图">关闭 <span aria-hidden="true">×</span></button><div class="lightbox-tools" role="group" aria-label="图片查看方式"><button type="button" data-lightbox-mode="fit" data-lightbox-fit aria-pressed="true" aria-controls="lightbox-image-area">完整原图</button><button type="button" data-lightbox-mode="focus" data-lightbox-focus aria-pressed="false" aria-controls="lightbox-image-area" hidden>重点区域</button><button type="button" data-lightbox-mode="actual" data-lightbox-zoom aria-pressed="false" aria-controls="lightbox-image-area">原尺寸读字</button></div></header><div class="lightbox-image-area" id="lightbox-image-area" tabindex="0" aria-label="图片区域，原尺寸模式可滚动查看"><img data-lightbox-image alt=""><div class="lightbox-error" hidden><p>大图暂未加载。</p><button type="button" data-lightbox-retry>重新加载图片</button></div></div><div class="lightbox-caption-area"><p data-lightbox-focus-note hidden></p><p data-lightbox-caption></p></div><div class="lightbox-actions"><button type="button" data-lightbox-prev>上一张</button><span data-lightbox-count aria-live="polite"></span><button type="button" data-lightbox-next>下一张</button></div></div></dialog>
+</body>
+</html>
